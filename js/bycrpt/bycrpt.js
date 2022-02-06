@@ -274,12 +274,12 @@ function getByte(c) {
         b = c;
     }
     if (b > 127) {
-        return -128 + (b % 128);
+        return -128 + b % 128;
     }
     else {
         return b;
     }
-};
+}
 
 function encode_base64(d, len) {
     var off = 0;
@@ -291,14 +291,14 @@ function encode_base64(d, len) {
     }
     while (off < len) {
         c1 = d[off++] & 0xff;
-        rs.push(BASE64_CODE[(c1 >> 2) & 0x3f]);
+        rs.push(BASE64_CODE[c1 >> 2 & 0x3f]);
         c1 = (c1 & 0x03) << 4;
         if (off >= len) {
             rs.push(BASE64_CODE[c1 & 0x3f]);
             break;
         }
         c2 = d[off++] & 0xff;
-        c1 |= (c2 >> 4) & 0x0f;
+        c1 |= c2 >> 4 & 0x0f;
         rs.push(BASE64_CODE[c1 & 0x3f]);
         c1 = (c2 & 0x0f) << 2;
         if (off >= len) {
@@ -306,12 +306,12 @@ function encode_base64(d, len) {
             break;
         }
         c2 = d[off++] & 0xff;
-        c1 |= (c2 >> 6) & 0x03;
+        c1 |= c2 >> 6 & 0x03;
         rs.push(BASE64_CODE[c1 & 0x3f]);
         rs.push(BASE64_CODE[c2 & 0x3f]);
     }
     return rs.join('');
-};
+}
 
 function char64(x) {
     var code = x.charCodeAt(0);
@@ -319,7 +319,7 @@ function char64(x) {
         return -1;
     }
     return INDEX_64[code];
-};
+}
 
 function decode_base64(s, maxolen) {
     var off = 0;
@@ -363,7 +363,7 @@ function decode_base64(s, maxolen) {
         ret.push(getByte(rs[off]));
     }
     return ret;
-};
+}
 
 function encipher(lr, off, state) {
     var i;
@@ -374,40 +374,40 @@ function encipher(lr, off, state) {
     l ^= state.P[0];
     for (i = 0; i <= BLOWFISH_NUM_ROUNDS - 2;) {
         // Feistel substitution on left word
-        n = state.S[(l >> 24) & 0xff];
-        n += state.S[0x100 | ((l >> 16) & 0xff)];
-        n ^= state.S[0x200 | ((l >> 8) & 0xff)];
-        n += state.S[0x300 | (l & 0xff)];
+        n = state.S[l >> 24 & 0xff];
+        n += state.S[0x100 | (l >> 16) & 0xff];
+        n ^= state.S[0x200 | (l >> 8) & 0xff];
+        n += state.S[0x300 | l & 0xff];
         r ^= n ^ state.P[++i];
 
         // Feistel substitution on right word
-        n = state.S[(r >> 24) & 0xff];
-        n += state.S[0x100 | ((r >> 16) & 0xff)];
-        n ^= state.S[0x200 | ((r >> 8) & 0xff)];
-        n += state.S[0x300 | (r & 0xff)];
+        n = state.S[r >> 24 & 0xff];
+        n += state.S[0x100 | (r >> 16) & 0xff];
+        n ^= state.S[0x200 | (r >> 8) & 0xff];
+        n += state.S[0x300 | r & 0xff];
         l ^= n ^ state.P[++i];
     }
     lr[off] = r ^ state.P[BLOWFISH_NUM_ROUNDS + 1];
     lr[off + 1] = l;
     return state;
-};
+}
 
 function streamtoword(data, state) {
     var i;
     var word = 0;
     var off = state.offp;
     for (i = 0; i < 4; i++) {
-        word = (word << 8) | (data[off] & 0xff);
+        word = word << 8 | data[off] & 0xff;
         off = (off + 1) % data.length;
     }
     state.offp = off;
     return word;
-};
+}
 
 function key(key, state) {
     var i;
     state.offp = 0;
-    var lr = new Array(0x00000000, 0x00000000);
+    var lr = [0x00000000, 0x00000000];
     var plen = state.P.length;
     var slen = state.S.length;
 
@@ -426,12 +426,12 @@ function key(key, state) {
         state.S[i + 1] = lr[1];
     }
     return state;
-};
+}
 
 function ekskey(data, key, state) {
     var i;
     state.offp = 0;
-    var lr = new Array(0x00000000, 0x00000000);
+    var lr = [0x00000000, 0x00000000];
     var plen = state.P.length;
     var slen = state.S.length;
 
@@ -454,7 +454,7 @@ function ekskey(data, key, state) {
         state.S[i + 1] = lr[1];
     }
     return state;
-};
+}
 
 function crypt_raw(password, salt, log_rounds, cdata, callback, progress) {
     var rounds;
@@ -487,7 +487,7 @@ function crypt_raw(password, salt, log_rounds, cdata, callback, progress) {
                 if (i % one_percent == 0) {
                     progress();
                 }
-                if ((new Date() - start) > MAX_EXECUTION_TIME) {
+                if (new Date() - start > MAX_EXECUTION_TIME) {
                     break;
                 }
             }
@@ -495,21 +495,21 @@ function crypt_raw(password, salt, log_rounds, cdata, callback, progress) {
         }
         else {
             for (i = 0; i < 64; i++) {
-                for (j = 0; j < (clen >> 1); j++) {
+                for (j = 0; j < clen >> 1; j++) {
                     encipher(cdata, j << 1, state);
                 }
             }
             var ret = [];
             for (i = 0; i < clen; i++) {
-                ret.push(getByte((cdata[i] >> 24) & 0xff));
-                ret.push(getByte((cdata[i] >> 16) & 0xff));
-                ret.push(getByte((cdata[i] >> 8) & 0xff));
+                ret.push(getByte(cdata[i] >> 24 & 0xff));
+                ret.push(getByte(cdata[i] >> 16 & 0xff));
+                ret.push(getByte(cdata[i] >> 8 & 0xff));
                 ret.push(getByte(cdata[i] & 0xff));
             }
             callback(ret);
         }
     }, 0);
-};
+}
 
 function password_to_bytes(password) {
     var passwordb = [];
@@ -518,11 +518,11 @@ function password_to_bytes(password) {
         if (c < 128) {
             passwordb.push(c);
         }
-        else if ((c > 127) && (c < 2048)) {
-            passwordb.push((c >> 6) | 192);
-            passwordb.push((c & 63) | 128);
+        else if (c > 127 && c < 2048) {
+            passwordb.push(c >> 6 | 192);
+            passwordb.push(c & 63 | 128);
         }
-        else if ((c >= 55296) && (c <= 56319)) {
+        else if (c >= 55296 && c <= 56319) {
             n++;
             if (n > password.length) {
                 throw 'utf-16 Decoding error: lead surrogate found without trail surrogate';
@@ -531,20 +531,20 @@ function password_to_bytes(password) {
             if (c < 56320 || c > 57343) {
                 throw 'utf-16 Decoding error: trail surrogate not in the range of 0xdc00 through 0xdfff';
             }
-            c = ((password.charCodeAt(n - 1) - 55296) << 10) + (c - 56320) + 65536;
-            passwordb.push((c >> 18) | 240);
-            passwordb.push(((c >> 12) & 63) | 128);
-            passwordb.push(((c >> 6) & 63) | 128);
-            passwordb.push((c & 63) | 128);
+            c = (password.charCodeAt(n - 1) - 55296 << 10) + (c - 56320) + 65536;
+            passwordb.push(c >> 18 | 240);
+            passwordb.push((c >> 12) & 63 | 128);
+            passwordb.push((c >> 6) & 63 | 128);
+            passwordb.push(c & 63 | 128);
         }
         else {
-            passwordb.push((c >> 12) | 224);
-            passwordb.push(((c >> 6) & 63) | 128);
-            passwordb.push((c & 63) | 128);
+            passwordb.push(c >> 12 | 224);
+            passwordb.push((c >> 6) & 63 | 128);
+            passwordb.push(c & 63 | 128);
         }
     }
     return passwordb;
-};
+}
 
 /*
  * callback: a function that will be passed the hash when it is complete
@@ -572,7 +572,7 @@ function hashpw(password, salt, callback, progress) {
     }
     else {
         minor = salt.charAt(2);
-        if ((minor != 'a' && minor != 'b') || salt.charAt(3) != '$') {
+        if (minor != 'a' && minor != 'b' || salt.charAt(3) != '$') {
             throw 'Invalid salt revision';
         }
         off = 4;
@@ -611,7 +611,7 @@ function hashpw(password, salt, callback, progress) {
             callback(rs.join(''));
         },
         progress);
-};
+}
 
 function gensalt(rounds) {
     var iteration_count = rounds;
@@ -629,7 +629,7 @@ function gensalt(rounds) {
     window.crypto.getRandomValues(s1);
     output.push(encode_base64(s1, BCRYPT_SALT_LEN));
     return output.join('');
-};
+}
 
 function checkpw(plaintext, hashed, callback, progress) {
     var off = 0;
@@ -641,7 +641,7 @@ function checkpw(plaintext, hashed, callback, progress) {
     }
     else {
         minor = hashed.charAt(2);
-        if ((minor != 'a' && minor != 'b') || hashed.charAt(3) != '$') {
+        if (minor != 'a' && minor != 'b' || hashed.charAt(3) != '$') {
             throw 'Invalid salt revision';
         }
         off = 4;
@@ -650,8 +650,8 @@ function checkpw(plaintext, hashed, callback, progress) {
     hashpw(plaintext, salt, function (try_pass) {
         var ret = 0;
         for (var i = 0; i < hashed.length; i++) {
-            ret |= getByte(hashed[i]) ^ getByte(try_pass[i])
+            ret |= getByte(hashed[i]) ^ getByte(try_pass[i]);
         }
         callback(ret == 0);
     }, progress);
-};
+}

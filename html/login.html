@@ -40,12 +40,20 @@
                 <div class="fc-login wrap-center-vertical">
                     <label for="tb-username"></label>
                     <input class="form-control" id="tb-username" placeholder="Username" required type="text">
+                    <small class="s-error-hint" id="fc-login-s-username-req">
+                        Username doesn't meet the minimum requirement!
+                    </small>
+                    <small class="s-error-hint" id="fc-login-s-username-err">Username doesn't exist!</small>
                 </div>
                 <div class="fc-login wrap-center-vertical">
                     <label for="tb-password"></label>
                     <input class="form-control" id="tb-password" placeholder="Password" required type="password">
+                    <small class="s-error-hint" id="fc-login-s-password-req">
+                        Password doesn't meet the minimum requirement!
+                    </small>
+                    <small class="s-error-hint" id="fc-login-s-password-err"> Password isn't correct! </small>
                 </div>
-                <button class="fc-login btn" type="submit">Submit</button>
+                <button class="fc-login btn" id="btn-login" type="submit">Submit</button>
             </form>
         </div>
 
@@ -62,6 +70,7 @@
                 integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+        <script defer src="../js/bycrpt/bycrpt.js"></script>
         <script defer src="../js/lottie/loading.js"></script>
         <script defer src="../js/login.js"></script>
     </body>

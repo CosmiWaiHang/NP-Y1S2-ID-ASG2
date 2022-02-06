@@ -59,6 +59,11 @@ body {
     border-color: rgba(174, 143, 135, 1);
 }
 
+.fc-login > small.s-error-hint {
+    color: rgba(255, 0, 0, 1);
+    display: none;
+}
+
 /* common css */
 .wrap-center-vertical {
     align-content: center;
