@@ -7,20 +7,62 @@
         <meta content="ID ASG II" name="description">
         <meta content="width=device-width, initial-scale=1" name="viewport">
 
-        <link href="../css/normalize.css" rel="stylesheet">
-        <link href="../css/lottie/loading.css" rel="stylesheet">
-        <link href="../css/login.css" rel="stylesheet">
+        <!-- Google Font API -->
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700&display=swap" rel="stylesheet">
+        <!-- Semantic UI API -->
+        <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+              rel="stylesheet"
+              type="text/css">
+        <!-- Bootstrap API -->
+        <link crossorigin="anonymous"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+              rel="stylesheet">
+
+        <!-- Main CSS -->
+        <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+        <link href="../css/lottie/loading.css" rel="stylesheet" type="text/css">
+        <link href="../css/login.css" rel="stylesheet" type="text/css">
+
+        <!-- WARN: PLACE ON PURPOSE. LOTTIE SCRIPT MUST BE LOAD WHEN RENDER START. -->
+        <script async src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     </head>
 
     <body>
         <lottie-player id="lp-loading"></lottie-player>
         <img alt="background-image" id="img-background" src="../asset/img/b-1.jpg" />
 
-        <script async src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <div class="wrap-center-vertical" id="d-login">
+            <header id="hd-login">Login</header>
+            <form id="f-login">
+                <div class="fc-login wrap-center-vertical">
+                    <label for="tb-username"></label>
+                    <input class="form-control" id="tb-username" placeholder="Username" required type="text">
+                </div>
+                <div class="fc-login wrap-center-vertical">
+                    <label for="tb-password"></label>
+                    <input class="form-control" id="tb-password" placeholder="Password" required type="password">
+                </div>
+                <button class="fc-login btn" type="submit">Submit</button>
+            </form>
+        </div>
+
         <script crossorigin="anonymous"
                 defer
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script crossorigin="anonymous"
+                defer
+                integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script crossorigin="anonymous"
+                defer
+                integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
         <script defer src="../js/lottie/loading.js"></script>
+        <script defer src="../js/login.js"></script>
     </body>
 </html>
