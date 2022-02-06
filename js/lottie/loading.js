@@ -20,6 +20,6 @@ $(document).ready(() => {
 $(window).on('load', () => {
     'use strict';
 
-    setTimeout(() => $(lpLoading)
-        .fadeOut(1500, 'swing', () => $(lpLoading).remove()), 5000);
+    $(lpLoading)
+        .fadeOut(1500, 'swing', () => $(lpLoading).remove());
 });
