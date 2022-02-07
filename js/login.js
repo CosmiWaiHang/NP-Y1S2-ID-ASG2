@@ -53,6 +53,7 @@ $(window).on('load', () => {
                 $('#fc-login-s-password-err').css('display', r ? 'none' : 'block');
 
                 // continue if succeed
+                window.alert(r ? 'login success' : 'login not success');
             },
             p => {},
         );
@@ -74,6 +75,8 @@ $(window).on('load', () => {
                 'x-apikey': '620020386a79155501021871',
                 'cache-control': 'no-cache',
             },
+            'beforeSend': () => showLoading(),
+            'complete': () => hideLoading(),
         };
 
         $.ajax(settings).done(response => auth(response));
