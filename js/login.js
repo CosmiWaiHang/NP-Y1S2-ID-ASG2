@@ -1,7 +1,5 @@
 /*jshint esversion: 8 */
 
-$.getScript('../js/bycrpt/bycrpt.js');
-$.getScript('../js/lottie/loading.js');
 
 $(window).on('load', () => {
     'use strict';
