@@ -25,13 +25,15 @@
         <link href="../css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../css/lottie/loading.css" rel="stylesheet" type="text/css">
         <link href="../css/login.css" rel="stylesheet" type="text/css">
-
-        <!-- WARN: PLACE ON PURPOSE. LOTTIE SCRIPT MUST BE LOAD WHEN RENDER START. -->
-        <script async src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     </head>
 
     <body>
-        <lottie-player id="lp-loading"></lottie-player>
+        <lottie-player autoplay
+                       loop
+                       mode="bounce"
+                       speed="0.75"
+                       src="../asset/lottie/loading-morandi-50.json"
+                       id="lp-loading"></lottie-player>
         <img alt="background-image" id="img-background" src="../asset/img/b-1.jpg" />
 
         <div class="wrap-center-vertical" id="d-login">
@@ -57,6 +59,7 @@
             </form>
         </div>
 
+        <script async src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         <script crossorigin="anonymous"
                 defer
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -70,8 +73,6 @@
                 integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-        <script defer src="../js/bycrpt/bycrpt.js"></script>
-        <script defer src="../js/lottie/loading.js"></script>
         <script defer src="../js/login.js"></script>
     </body>
 </html>
