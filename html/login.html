@@ -55,7 +55,17 @@
                     </small>
                     <small class="s-error-hint" id="fc-login-s-password-err"> Password isn't correct! </small>
                 </div>
+
                 <button class="fc-login btn" id="btn-login" type="submit">Submit</button>
+                <div id="btn-click-tp" role="tooltip">
+                    <lottie-player autoplay
+                                   id="lp-btn-click"
+                                   loop
+                                   speed="1"
+                                   src="../asset/lottie/mouse-click.json"></lottie-player>
+                    <div data-popper-arrow id="btn-click-tp-arrow"></div>
+                </div>
+
             </form>
         </div>
 
@@ -75,6 +85,7 @@
         <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
         <script defer src="../js/lottie/loading.js"></script>
         <script defer src="../js/bycrpt/bycrpt.js"></script>
+        <script defer src="../js/lottie/button-click.js"></script>
         <script defer src="../js/login.js"></script>
     </body>
 </html>

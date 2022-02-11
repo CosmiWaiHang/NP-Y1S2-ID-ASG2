@@ -64,6 +64,44 @@ body {
     display: none;
 }
 
+#btn-click-tp {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: none;
+}
+
+#btn-click-tp[data-show] {
+    display: block;
+}
+
+#btn-click-tp-arrow,
+#btn-click-tp-arrow::before {
+    background: inherit;
+    height: 8px;
+    position: absolute;
+    width: 8px;
+}
+
+#btn-click-tp-arrow {
+    visibility: hidden;
+}
+
+#btn-click-tp-arrow::before {
+    content: '';
+    transform: rotate(45deg);
+    visibility: visible;
+}
+
+#btn-click-tp[data-popper-placement^='bottom'] > #btn-click-tp-arrow {
+    top: -4px;
+}
+
+#lp-btn-click {
+    height: 100px;
+    width: 100px;
+    z-index: 1;
+}
+
 /* common css */
 .wrap-center-vertical {
     align-content: center;

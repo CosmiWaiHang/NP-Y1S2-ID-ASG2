@@ -1,4 +1,4 @@
-/*jshint esversion: 8 */
+/*jshint esversion: 9 */
 
 
 $(window).on('load', () => {
@@ -8,6 +8,8 @@ $(window).on('load', () => {
     $('#f-login').submit(event => event.preventDefault());
 
     $('#d-login').fadeIn('fast', 'swing', () => $('#d-login').css('display', 'flex'));
+
+    hintClick('#btn-login', '#btn-click-tp');
 });
 
 
@@ -43,20 +45,16 @@ $(window).on('load', () => {
         if (!isUsernameExist) { return; }
 
         const password = $('#tb-password').val();
+        const hash = body[0].password;
 
-        checkpw(
-            password,
-            body[0].password,
-            r => {
-                if (undefined === r) { return; }
+        checkpw(password, hash, r => {
+            if (undefined === r) { return; }
 
-                $('#fc-login-s-password-err').css('display', r ? 'none' : 'block');
+            $('#fc-login-s-password-err').css('display', r ? 'none' : 'block');
 
-                // continue if succeed
-                window.alert(r ? 'login success' : 'login not success');
-            },
-            p => {},
-        );
+            // continue if succeed
+            window.alert(r ? 'login success' : 'login not success');
+        }, () => {});
     };
 
     $('#btn-login').click(() => {
@@ -71,9 +69,7 @@ $(window).on('load', () => {
             'url': `https://npy1s2idasg2-e59d.restdb.io/rest/account?q={"username":"${username}"}`,
             'method': 'GET',
             'headers': {
-                'content-type': 'application/json',
-                'x-apikey': '620020386a79155501021871',
-                'cache-control': 'no-cache',
+                'content-type': 'application/json', 'x-apikey': '620020386a79155501021871', 'cache-control': 'no-cache',
             },
             'beforeSend': () => showLoading(),
             'complete': () => hideLoading(),
