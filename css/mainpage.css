@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background: black;
+}
+/* Hamburger Menu */
+.hamburger-menu-wrapper {
+    background: black;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 100px;
+    z-index: 1;
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+.hamburger-menu-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+.hamburger-menu-element {
+    margin: 40px;
+}
+.hamburger-menu-link {
+    position: relative;
+    display: inline-flex;
+    font-weight: bold;
+    font-size: 3em;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.hamburger-menu-wrapper.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hamburger Button */
+.hamburger-menu-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    z-index: 2;
+}
+.hamburger-menu {
+    width: 50px;
+    height: 6px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px red;
+    transition: all .5s ease-in-out;
+}
+.hamburger-menu::before,
+.hamburger-menu::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px red;
+    transition: all .5s ease-in-out;
+}
+.hamburger-menu::before {
+    transform: translateY(-16px);
+}
+.hamburger-menu::after {
+    transform: translateY(16px);
+}
+
+/* Animation for hamburger menu */
+.hamburger-menu-btn.open .hamburger-menu {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+}
+.hamburger-menu-btn.open .hamburger-menu::before{
+    transform: rotate(45deg) translate(35px, -35px);
+}
+.hamburger-menu-btn.open .hamburger-menu::after{
+    transform: rotate(-45deg) translate(35px, 35px);
+}
+
+/* */
