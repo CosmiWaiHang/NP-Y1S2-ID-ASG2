@@ -45,11 +45,7 @@
                         <div class="wrap-center-vertical">
                             <div class="fc-signup wrp-ctr-hrzt">
                                 <label for="tb-username">Username: </label>
-                                <input class="form-control"
-                                       id="tb-username"
-                                       placeholder="Username"
-                                       required
-                                       type="text">
+                                <input class="form-control" id="tb-username" placeholder="Username" type="text">
                             </div>
                             <small class="s-error-hint" id="fc-signup-s-username-req">
                                 Username doesn't meet the minimum requirement!
@@ -60,11 +56,7 @@
                         <div class="wrap-center-vertical">
                             <div class="fc-signup wrp-ctr-hrzt">
                                 <label for="tb-password">Password: </label>
-                                <input class="form-control"
-                                       id="tb-password"
-                                       placeholder="Password"
-                                       required
-                                       type="password">
+                                <input class="form-control" id="tb-password" placeholder="Password" type="password">
                             </div>
                             <small class="s-error-hint" id="fc-signup-s-password-req">
                                 Password doesn't meet the minimum requirement!
@@ -77,7 +69,6 @@
                                 <input class="form-control"
                                        id="tb-password-cfm"
                                        placeholder="Confirm Password"
-                                       required
                                        type="password">
                             </div>
                             <small class="s-error-hint" id="fc-signup-s-password-err">
@@ -90,7 +81,7 @@
                         <div class="wrap-center-vertical">
                             <div class="fc-signup wrp-ctr-hrzt">
                                 <label for="tb-email">Email: </label>
-                                <input class="form-control" id="tb-email" placeholder="Email" required type="email" />
+                                <input class="form-control" id="tb-email" placeholder="Email" type="email" />
                             </div>
                             <small class="s-error-hint" id="fc-signup-s-email-err">Email already taken!</small>
                         </div>
@@ -100,7 +91,6 @@
                                 <input class="form-control"
                                        id="tb-dob"
                                        placeholder="Birthday"
-                                       required
                                        type="datetime-local"
                                        value="2001-01-01T00:00" />
                             </div>
@@ -108,8 +98,11 @@
                         <div class="wrap-center-vertical">
                             <div class="fc-signup wrp-ctr-hrzt">
                                 <label for="tb-contact">Contact: </label>
-                                <input class="form-control" id="tb-contact" placeholder="Contact" required type="tel">
+                                <input class="form-control" id="tb-contact" placeholder="Contact" type="tel">
                             </div>
+                            <small class="s-error-hint" id="fc-signup-s-contact-req">
+                                Contact number isn't an SG number
+                            </small>
                             <small class="s-error-hint" id="fc-signup-s-contact-err">
                                 Contact number already taken by someone!
                             </small>
