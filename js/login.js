@@ -1,4 +1,4 @@
-/*jshint esversion: 8 */
+/*jshint esversion: 9 */
 
 
 $(window).on('load', () => {
@@ -43,20 +43,16 @@ $(window).on('load', () => {
         if (!isUsernameExist) { return; }
 
         const password = $('#tb-password').val();
+        const hash = body[0].password;
 
-        checkpw(
-            password,
-            body[0].password,
-            r => {
-                if (undefined === r) { return; }
+        checkpw(password, hash, r => {
+            if (undefined === r) { return; }
 
-                $('#fc-login-s-password-err').css('display', r ? 'none' : 'block');
+            $('#fc-login-s-password-err').css('display', r ? 'none' : 'block');
 
-                // continue if succeed
-                window.alert(r ? 'login success' : 'login not success');
-            },
-            p => {},
-        );
+            // continue if succeed
+            window.alert(r ? 'login success' : 'login not success');
+        }, () => {});
     };
 
     $('#btn-login').click(() => {
@@ -71,9 +67,7 @@ $(window).on('load', () => {
             'url': `https://npy1s2idasg2-e59d.restdb.io/rest/account?q={"username":"${username}"}`,
             'method': 'GET',
             'headers': {
-                'content-type': 'application/json',
-                'x-apikey': '620020386a79155501021871',
-                'cache-control': 'no-cache',
+                'content-type': 'application/json', 'x-apikey': '620020386a79155501021871', 'cache-control': 'no-cache',
             },
             'beforeSend': () => showLoading(),
             'complete': () => hideLoading(),
@@ -81,4 +75,56 @@ $(window).on('load', () => {
 
         $.ajax(settings).done(response => auth(response));
     });
+})();
+
+
+(() => {
+    'use strict';
+
+    const button = document.querySelector('#btn-login');
+    const tooltip = document.querySelector('#btn-click-tp');
+
+    const popperInstance = Popper.createPopper(button, tooltip, {
+        modifiers: [
+            {
+                name: 'offset', options: {
+                    offset: [0, 8],
+                },
+            },
+        ],
+    });
+
+    function show() {
+        tooltip.setAttribute('data-show', '');
+
+        popperInstance
+            .setOptions(options => ({
+                ...options, placement: 'right', modifiers: [
+                    ...options.modifiers, {name: 'eventListeners', enabled: true},
+                ],
+            }))
+            .then(/* Promise IGNORED on purpose. */);
+
+        popperInstance
+            .update()
+            .then(/* Promise IGNORED on purpose. */);
+    }
+
+    function hide() {
+        tooltip.removeAttribute('data-show');
+
+        popperInstance
+            .setOptions(options => ({
+                ...options, modifiers: [
+                    ...options.modifiers, {name: 'eventListeners', enabled: false},
+                ],
+            }))
+            .then(/* Promise IGNORED on purpose. */);
+    }
+
+    const showEvents = ['mouseenter'];
+    const hideEvents = ['mouseleave', 'blur'];
+
+    showEvents.forEach(event => button.addEventListener(event, show));
+    hideEvents.forEach(event => button.addEventListener(event, hide));
 })();
