@@ -8,6 +8,8 @@ $(window).on('load', () => {
     $('#f-login').submit(event => event.preventDefault());
 
     $('#d-login').fadeIn('fast', 'swing', () => $('#d-login').css('display', 'flex'));
+
+    hintClick('#btn-login', '#btn-click-tp');
 });
 
 
@@ -75,56 +77,4 @@ $(window).on('load', () => {
 
         $.ajax(settings).done(response => auth(response));
     });
-})();
-
-
-(() => {
-    'use strict';
-
-    const button = document.querySelector('#btn-login');
-    const tooltip = document.querySelector('#btn-click-tp');
-
-    const popperInstance = Popper.createPopper(button, tooltip, {
-        modifiers: [
-            {
-                name: 'offset', options: {
-                    offset: [0, 8],
-                },
-            },
-        ],
-    });
-
-    function show() {
-        tooltip.setAttribute('data-show', '');
-
-        popperInstance
-            .setOptions(options => ({
-                ...options, placement: 'right', modifiers: [
-                    ...options.modifiers, {name: 'eventListeners', enabled: true},
-                ],
-            }))
-            .then(/* Promise IGNORED on purpose. */);
-
-        popperInstance
-            .update()
-            .then(/* Promise IGNORED on purpose. */);
-    }
-
-    function hide() {
-        tooltip.removeAttribute('data-show');
-
-        popperInstance
-            .setOptions(options => ({
-                ...options, modifiers: [
-                    ...options.modifiers, {name: 'eventListeners', enabled: false},
-                ],
-            }))
-            .then(/* Promise IGNORED on purpose. */);
-    }
-
-    const showEvents = ['mouseenter'];
-    const hideEvents = ['mouseleave', 'blur'];
-
-    showEvents.forEach(event => button.addEventListener(event, show));
-    hideEvents.forEach(event => button.addEventListener(event, hide));
 })();
