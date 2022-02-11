@@ -23,8 +23,6 @@ $(window).on('load', () => {
 
     const regex = {
         username: () => {
-            'use strict';
-
             const reUsername = /^[a-zA-Z]{4,}/g;
             const username = $('#tb-username').val();
 
@@ -37,8 +35,6 @@ $(window).on('load', () => {
         },
 
         password: () => {
-            'use strict';
-
             const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
             const password = $('#tb-password').val();
 
@@ -51,8 +47,6 @@ $(window).on('load', () => {
         },
 
         passwordConfirm: () => {
-            'use strict';
-
             const password = $('#tb-password').val();
             const confirm = $('#tb-password-cfm').val();
 
@@ -65,8 +59,6 @@ $(window).on('load', () => {
         },
 
         contact: () => {
-            'use strict';
-
             const reContact = /^([689])\d{7}/g;
             const contact = $('#tb-contact').val();
 

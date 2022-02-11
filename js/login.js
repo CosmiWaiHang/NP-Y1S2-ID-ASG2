@@ -23,8 +23,6 @@ $(window).on('load', () => {
 
     const regex = {
         username: () => {
-            'use strict';
-
             // 4 letters (min)
             const reUsername = /^[a-zA-Z]{4,}/g;
             const username = $('#tb-username').val();
@@ -38,8 +36,6 @@ $(window).on('load', () => {
         },
 
         password: () => {
-            'use strict';
-
             // 8 characters (min), 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character.
             const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
             const password = $('#tb-password').val();
