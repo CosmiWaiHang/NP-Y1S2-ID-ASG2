@@ -5,14 +5,22 @@ $(window).on('load', () => {
     'use strict';
 
     // prevent form to reload when submit button being click
-    $('#f-signup').submit(event => event.preventDefault());
+    $('#f-signup')
+        .submit(e => e.preventDefault());
 
-    $('#d-signup').fadeIn('fast', 'swing', () => $('#d-signup').css('display', 'flex'));
+    $('#d-signup')
+        .fadeIn('fast', 'swing', () => $('#d-signup').css('display', 'flex'));
+
+    // prevent user from copying password
+    $('#tb-password #tb-password-cfm')
+        .copy(() => false);
 
     hintClick('#btn-signup', '#btn-click-tp');
 });
 
 (() => {
+    'use strict';
+
     const regex = {
         username: () => {
             'use strict';
@@ -70,11 +78,7 @@ $(window).on('load', () => {
             return isValid;
         },
 
-        exec: () =>
-            regex.username()
-            && regex.password()
-            && regex.passwordConfirm()
-            && regex.contact(),
+        exec: () => regex.username() && regex.password() && regex.passwordConfirm() && regex.contact(),
     };
 
     $('#btn-signup')

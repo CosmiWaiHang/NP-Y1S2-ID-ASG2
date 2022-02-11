@@ -5,9 +5,14 @@ $(window).on('load', () => {
     'use strict';
 
     // prevent form to reload when submit button being click
-    $('#f-login').submit(event => event.preventDefault());
+    $('#f-login')
+        .submit(e => e.preventDefault());
 
-    $('#d-login').fadeIn('fast', 'swing', () => $('#d-login').css('display', 'flex'));
+    $('#d-login')
+        .fadeIn('fast', 'swing', () => $('#d-login').css('display', 'flex'));
+
+    $('#tb-password')
+        .copy(() => false);
 
     hintClick('#btn-login', '#btn-click-tp');
 });
@@ -16,22 +21,38 @@ $(window).on('load', () => {
 (() => {
     'use strict';
 
-    const regex = () => {
-        // 4 letters (min)
-        const reUsername = /^[a-zA-Z]{4,}/g;
-        // 8 characters (min), 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character.
-        const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
+    const regex = {
+        username: () => {
+            'use strict';
 
-        const username = $('#tb-username').val();
-        const password = $('#tb-password').val();
+            // 4 letters (min)
+            const reUsername = /^[a-zA-Z]{4,}/g;
+            const username = $('#tb-username').val();
 
-        const isUsernameValid = reUsername.exec(username);
-        const isPasswordValid = rePassword.exec(password);
+            const isValid = reUsername.exec(username);
 
-        $('#fc-login-s-username-req').css('display', isUsernameValid ? 'none' : 'block');
-        $('#fc-login-s-password-req').css('display', isPasswordValid ? 'none' : 'block');
+            $('#fc-login-s-username-req')
+                .css('display', isValid ? 'none' : 'block');
 
-        return isUsernameValid && isPasswordValid;
+            return isValid;
+        },
+
+        password: () => {
+            'use strict';
+
+            // 8 characters (min), 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character.
+            const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
+            const password = $('#tb-password').val();
+
+            const isValid = rePassword.exec(password);
+
+            $('#fc-login-s-password-req')
+                .css('display', isValid ? 'none' : 'block');
+
+            return isValid;
+        },
+
+        exec: () => regex.username() && regex.password(),
     };
 
 
@@ -58,7 +79,7 @@ $(window).on('load', () => {
     };
 
     $('#btn-login').click(() => {
-        const hasMeetRequirement = regex();
+        const hasMeetRequirement = regex.exec();
 
         if (!hasMeetRequirement) { return; }
 
