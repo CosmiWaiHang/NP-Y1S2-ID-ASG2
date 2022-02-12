@@ -5,11 +5,16 @@
     font-family: 'Poppins', sans-serif;
 }
 body {
-    background: black;
+    background: darkblue;
+}
+.logo-img {
+    position: absolute;
+    left: 45%;
+    top: 0;
 }
 /* Hamburger Menu */
 .hamburger-menu-wrapper {
-    background: black;
+    background: yellow;
     display: flex;
     align-items: center;
     position: fixed;
