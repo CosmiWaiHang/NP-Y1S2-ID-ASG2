@@ -3,7 +3,8 @@
 
 const accountRepo = {
     API: '620020386a79155501021871',
-    // <BLANK>
+
+
     get: {
         /**
          * <b> Get the account by username from RestDB </b> <br />
@@ -35,13 +36,26 @@ const accountRepo = {
                 'headers': {
                     'content-type': 'application/json', 'x-apikey': accountRepo.API, 'cache-control': 'no-cache',
                 },
+                'beforeSend': () => showLoading(),
+                'complete': () => hideLoading(),
             };
 
             $.ajax(settings)
-             .done(response => !!callback ? callback(response) : result = response);
+             .done(response => !!callback ? callback(response) : result = response[0]);
 
             return result;
         },
+
+        /**
+         * Get Account id by username
+         * Reference {@link accountRepo.get.by_username}
+         *
+         * @param username username of the account
+         * @param callback optional, callback function
+         */
+        id_by_username: (username, callback = null) => accountRepo
+            .get
+            .by_username(username, callback)['_id'],
     },
 
 
@@ -79,6 +93,8 @@ const accountRepo = {
                 },
                 'processData': false,
                 'data': JSON.stringify(data),
+                'beforeSend': () => showLoading(),
+                'complete': () => hideLoading(),
             };
 
             $.ajax(settings)
