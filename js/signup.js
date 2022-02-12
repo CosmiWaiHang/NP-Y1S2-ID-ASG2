@@ -4,16 +4,16 @@
 $(window).on('load', () => {
     'use strict';
 
-    // prevent form to reload when submit button being click
+    /* Prevent form to reload when submit button being click */
     $('#f-signup')
-        .submit(e => e.preventDefault());
+        .submit(() => false);
 
     $('#d-signup')
         .fadeIn('fast', 'swing', () => $('#d-signup').css('display', 'flex'));
 
-    // prevent user from copying password
-    $('#tb-password #tb-password-cfm')
-        .copy(() => false);
+    /* Prevent user from copying the password */
+    $('#tb-password, #tb-password-cfm')
+        .on('cut copy paste', () => false);
 
     hintClick('#btn-signup', '#btn-click-tp');
 });
@@ -73,14 +73,64 @@ $(window).on('load', () => {
         exec: () => regex.username() && regex.password() && regex.passwordConfirm() && regex.contact(),
     };
 
+    const create = {
+        account: () => {
+            const username = $('#tb-username').val();
+            const password = $('#tb-password').val();
+            const salt = gensalt(8);
+
+            hashpw(
+                password,
+                salt,
+                hash =>
+                    accountRepo
+                        .post
+                        .create(username, hash, response => console.log(response)),
+                () => {},
+            );
+        },
+
+        user: () => {
+            const username = $('#tb-username').val();
+            const accountId =
+                accountRepo
+                    .get
+                    .id_by_username(username);
+
+            const email = $('#tb-email').val();
+            const dob = $('#tb-dob').val();
+            const contact = $('#tb-contact').val();
+
+            const user = new User(email, dob, contact, accountId);
+
+            userRepo
+                .post
+                .create(user, response => console.log(response));
+        },
+
+        all: () => {
+            create.account();
+
+            sleep(5000)
+                .then(() => create.user());
+        },
+    };
+
     $('#btn-signup')
         .click(() => {
             const hasMeetRequirement = regex.exec();
 
-            if (!hasMeetRequirement) {
-                return;
+            if (hasMeetRequirement) {
+                create.all();
             }
-
-            console.log('passed');
         });
 })();
+
+console.log('s!O219615');
+console.log('Cosmiwaihangx');
+console.log('98765432');
+
+$('#tb-username').val('Cosmiwaihangx');
+$('#tb-password #tb-password-cfm').val('s!O219615');
+$('#tb-contact').val('98765432');
+$('#tb-email').val('S12345678A@connect.np.edu.sg');
