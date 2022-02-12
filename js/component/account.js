@@ -1,6 +1,30 @@
 /*jshint esversion: 9 */
 
 
+class Account {
+    constructor(username, password) {
+        this._username = username;
+        this._password = password;
+    }
+
+    get username() {
+        return this._username;
+    }
+
+    set username(value) {
+        this._username = value;
+    }
+
+    get password() {
+        return this._password;
+    }
+
+    set password(value) {
+        this._password = value;
+    }
+}
+
+
 const accountRepo = {
     API: '620020386a79155501021871',
 
@@ -71,16 +95,16 @@ const accountRepo = {
          *     - the request will run in SYNC mode
          *     - the response will be return upon receiving <br />
          *
-         * @param username username of the new account
-         * @param password hashed password of the new account
-         * @param callback optional, callback function
+         * @param account {Account} username of the new account
+         * @param callback {function} optional, callback function
          * @returns {null | result}
          */
-        create: (username, password, callback = null) => {
+        create: (account, callback = null) => {
             let result = null;
 
             const data = {
-                'username': username, 'password': password,
+                'username': account.username,
+                'password': account.password,
             };
 
             const settings = {
