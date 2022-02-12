@@ -37,6 +37,91 @@
         <img alt="background-image" id="img-background" src="../asset/img/b-1.jpg" />
 
         <!-- Here -->
+        <div class="wrap-center-vertical" id="d-signup">
+            <header id="hd-signup">SignUp</header>
+            <form id="f-signup">
+                <div class="wrp-ctr-hrzt">
+                    <div class="wrap-center-vertical">
+                        <div class="wrap-center-vertical">
+                            <div class="fc-signup wrp-ctr-hrzt">
+                                <label for="tb-username">Username: </label>
+                                <input class="form-control" id="tb-username" placeholder="Username" type="text">
+                            </div>
+                            <small class="s-error-hint" id="fc-signup-s-username-req">
+                                Username doesn't meet the minimum requirement!
+                            </small>
+                            <small class="s-error-hint" id="fc-signup-s-username-err">Username already taken!</small>
+                        </div>
+
+                        <div class="wrap-center-vertical">
+                            <div class="fc-signup wrp-ctr-hrzt">
+                                <label for="tb-password">Password: </label>
+                                <input class="form-control" id="tb-password" placeholder="Password" type="password">
+                            </div>
+                            <small class="s-error-hint" id="fc-signup-s-password-req">
+                                Password doesn't meet the minimum requirement!
+                            </small>
+                        </div>
+
+                        <div class="wrap-center-vertical">
+                            <div class="fc-signup wrp-ctr-hrzt">
+                                <label for="tb-password-cfm">Confirm Password: </label>
+                                <input class="form-control"
+                                       id="tb-password-cfm"
+                                       placeholder="Confirm Password"
+                                       type="password">
+                            </div>
+                            <small class="s-error-hint" id="fc-signup-s-password-err">
+                                Password doesn't match!
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="wrap-center-vertical">
+                        <div class="wrap-center-vertical">
+                            <div class="fc-signup wrp-ctr-hrzt">
+                                <label for="tb-email">Email: </label>
+                                <input class="form-control" id="tb-email" placeholder="Email" type="email" />
+                            </div>
+                            <small class="s-error-hint" id="fc-signup-s-email-err">Email already taken!</small>
+                        </div>
+                        <div class="wrap-center-vertical">
+                            <div class="fc-signup wrp-ctr-hrzt">
+                                <label for="tb-dob">Birthday: </label>
+                                <input class="form-control"
+                                       id="tb-dob"
+                                       placeholder="Birthday"
+                                       type="datetime-local"
+                                       value="2001-01-01T00:00" />
+                            </div>
+                        </div>
+                        <div class="wrap-center-vertical">
+                            <div class="fc-signup wrp-ctr-hrzt">
+                                <label for="tb-contact">Contact: </label>
+                                <input class="form-control" id="tb-contact" placeholder="Contact" type="tel">
+                            </div>
+                            <small class="s-error-hint" id="fc-signup-s-contact-req">
+                                Contact number isn't an SG number
+                            </small>
+                            <small class="s-error-hint" id="fc-signup-s-contact-err">
+                                Contact number already taken by someone!
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="fc-signup btn" id="btn-signup" type="submit">Submit</button>
+                <div id="btn-click-tp" role="tooltip">
+                    <lottie-player autoplay
+                                   id="lp-btn-click"
+                                   loop
+                                   speed="1"
+                                   src="../asset/lottie/mouse-click.json"></lottie-player>
+                    <div data-popper-arrow id="btn-click-tp-arrow"></div>
+                </div>
+            </form>
+        </div>
+        <!-- End Here -->
 
         <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         <script crossorigin="anonymous"
@@ -54,6 +139,7 @@
         <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
         <script defer src="../js/lottie/loading.js"></script>
         <script defer src="../js/bycrpt/bycrpt.js"></script>
+        <script defer src="../js/lottie/button-click.js"></script>
         <script defer src="../js/signup.js"></script>
     </body>
 </html>

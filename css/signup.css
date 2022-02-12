@@ -12,3 +12,119 @@ body {
     width: 100vw;
     z-index: -1;
 }
+
+#d-signup {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+}
+
+#hd-signup {
+    font-size: 48px;
+    margin: 1px;
+}
+
+#f-signup {
+    align-content: center;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.fc-signup > input {
+    background: rgba(196, 196, 196, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 6.25vh;
+    margin: 0.75vh;
+    max-height: 75px;
+    min-height: 45px;
+    min-width: 150px;
+    width: 15vw;
+}
+
+.fc-signup > label {
+    margin-right: 10px;
+    text-align: right;
+    width: 100px;
+}
+
+#f-signup > button {
+    background: rgba(68, 118, 128, 1);
+    border-radius: 40px;
+    color: whitesmoke;
+    display: block;
+    height: 7.5vh;
+    margin-top: 1.5vh;
+    min-height: 50px;
+    width: 100%;
+}
+
+.fc-signup > input:hover,
+.fc-signup > input:focus {
+    background: transparent;
+    border-color: rgba(174, 143, 135, 1);
+}
+
+small.s-error-hint {
+    color: rgba(255, 0, 0, 1);
+    display: none;
+}
+
+#btn-click-tp {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: none;
+}
+
+#btn-click-tp[data-show] {
+    display: block;
+}
+
+#btn-click-tp-arrow,
+#btn-click-tp-arrow::before {
+    background: inherit;
+    height: 8px;
+    position: absolute;
+    width: 8px;
+}
+
+#btn-click-tp-arrow {
+    visibility: hidden;
+}
+
+#btn-click-tp-arrow::before {
+    content: '';
+    transform: rotate(45deg);
+    visibility: visible;
+}
+
+#btn-click-tp[data-popper-placement^='bottom'] > #btn-click-tp-arrow {
+    top: -4px;
+}
+
+#lp-btn-click {
+    height: 100px;
+    width: 100px;
+    z-index: 1;
+}
+
+/* common css */
+.wrap-center-vertical {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.wrp-ctr-hrzt {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
