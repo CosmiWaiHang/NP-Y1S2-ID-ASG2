@@ -82,10 +82,13 @@ $(window).on('load', () => {
             hashpw(
                 password,
                 salt,
-                hash =>
+                hash => {
+                    const account = new Account(username, hash);
+                    
                     accountRepo
                         .post
-                        .create(username, hash, response => console.log(response)),
+                        .create(account, response => console.log(response));
+                },
                 () => {},
             );
         },
