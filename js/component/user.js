@@ -118,4 +118,35 @@ const userRepo = {
             return {res, err};
         },
     },
+
+    delete: (userId, onSuccess = null, onFailure = null) => {
+        let res = null;
+        let err = null;
+
+        const settings = {
+            'async': !!onSuccess,
+            'crossDomain': true,
+            'url': `https://npy1s2idasg2-e59d.restdb.io/rest/member/${userId}`,
+            'method': 'DELETE',
+            'headers': {
+                'content-type': 'application/json',
+                'x-apikey': userRepo.API,
+                'cache-control': 'no-cache',
+            },
+            'beforeSend': () => showLoading(),
+            'complete': () => hideLoading(),
+        };
+
+        $.ajax(settings)
+         .done(response =>
+             !!onSuccess
+                 ? onSuccess(response)
+                 : res = response)
+         .fail((xhr, status, message) =>
+             !!onFailure
+                 ? onFailure(xhr, status, message)
+                 : err = {xhr, status, message});
+
+        return {res, err};
+    },
 };
