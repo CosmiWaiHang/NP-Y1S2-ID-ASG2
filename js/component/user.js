@@ -54,20 +54,30 @@ const userRepo = {
         /**
          * <b> Send the {@link User} to RestDB </b> <br />
          *
-         * If {@param callback} function is provided,
+         * If {@param onSuccess} function is provided,
          *     - the callback function will be run upon receiving a response
          *     - the request will run in ASYNC mode
          *     - a NULL will be return <br />
-         * If {@param callback} function is NOT provided,
+         * If {@param onSuccess} function is NOT provided,
          *     - the request will run in SYNC mode
          *     - the response will be return upon receiving <br />
          *
+         * <i> async mode will only depend on if the onSuccess is provided or not </i> <br />
+         *
+         * If {@param onFailure} function is provided,
+         *     - the callback function will be run upon catching an error
+         *     - a NULL will be return <br />
+         * if {@param onFailure} function is NOT provided,
+         *     - the error will be return after catching it.
+         *
          * @param user {User} user object
-         * @param callback {function} optional, callback function
-         * @returns {null | result}
+         * @param onSuccess {function} optional, callback function to run when request succeed
+         * @param onFailure {function} optional, callback function to run when request failed
+         * @returns {{res: null, err: null}}
          */
-        create: (user, callback = null) => {
-            let result = null;
+        create: (user, onSuccess = null, onFailure = null) => {
+            let res = null;
+            let err = null;
 
             const data = {
                 'email': user.email,
@@ -79,9 +89,8 @@ const userRepo = {
                 data['birthday'] = user.dob;
             }
 
-
             const settings = {
-                'async': !!callback,
+                'async': !!onSuccess,
                 'crossDomain': true,
                 'url': 'https://npy1s2idasg2-e59d.restdb.io/rest/member',
                 'method': 'POST',
@@ -97,16 +106,16 @@ const userRepo = {
             };
 
             $.ajax(settings)
-             .done(response => !!callback ? callback(response) : result = response)
+             .done(response =>
+                 !!onSuccess
+                     ? onSuccess(response)
+                     : res = response)
              .fail((xhr, status, message) =>
-                 console.log({
-                     'XHR': xhr,
-                     'STATUS': status,
-                     'MESSAGE': message,
-                 }),
-             );
+                 !!onFailure
+                     ? onFailure(xhr, status, message)
+                     : err = {xhr, status, message});
 
-            return result;
+            return {res, err};
         },
     },
 };

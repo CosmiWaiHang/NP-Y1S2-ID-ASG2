@@ -33,53 +33,70 @@ const accountRepo = {
         /**
          * <b> Get the account by username from RestDB </b> <br />
          *
-         * If {@param callback} function is provided,
+         * If {@param onSuccess} function is provided,
          *     - the callback function will be run upon receiving a response
          *     - the request will run ASYNC mode
          *     - a NULL will be return <br />
-         * If {@param callback} function is NOT provided,
+         * If {@param onSuccess} function is NOT provided,
          *     - the request will run in SYNC mode
          *     - the response will be return upon receiving <br />
          *
-         * @param username username of the account
-         * @param callback optional, callback function
-         * @returns {null | result}
+         * <i> async mode will only depend on if the onSuccess is provided or not </i> <br />
+         *
+         * If {@param onFailure} function is provided,
+         *     - the callback function will be run upon catching an error
+         *     - a NULL will be return <br />
+         * if {@param onFailure} function is NOT provided,
+         *     - the error will be return after catching it.
+         *
+         * @param username {string} username of the account
+         * @param onSuccess {function} optional, callback function to run when request succeed
+         * @param onFailure {function} optional, callback function to run when request failed
+         * @returns {{res: null, err: null}}
          */
-        by_username: (username, callback = null) => {
-            let result = null;
+        by_username: (username, onSuccess = null, onFailure = null) => {
+            let res = null;
+            let err = null;
 
             const query = {
                 'username': username,
             };
 
             const settings = {
-                'async': !!callback,
+                'async': !!onSuccess,
                 'crossDomain': true,
                 'url': `https://npy1s2idasg2-e59d.restdb.io/rest/account?q=${JSON.stringify(query)}`,
                 'method': 'GET',
                 'headers': {
-                    'content-type': 'application/json', 'x-apikey': accountRepo.API, 'cache-control': 'no-cache',
+                    'content-type': 'application/json',
+                    'x-apikey': accountRepo.API,
+                    'cache-control': 'no-cache',
                 },
                 'beforeSend': () => showLoading(),
                 'complete': () => hideLoading(),
             };
 
             $.ajax(settings)
-             .done(response => !!callback ? callback(response) : result = response[0]);
+             .done(response =>
+                 !!onSuccess
+                     ? onSuccess(response)
+                     : res = response[0])
+             .fail((xhr, status, message) =>
+                 !!onFailure
+                     ? onFailure(xhr, status, message)
+                     : err = {xhr, status, message});
 
-            return result;
+            return {res, err};
         },
 
         /**
          * Get Account id by username
          * Reference {@link accountRepo.get.by_username}
-         *
-         * @param username username of the account
-         * @param callback optional, callback function
          */
-        id_by_username: (username, callback = null) => accountRepo
-            .get
-            .by_username(username, callback)['_id'],
+        id_by_username: username =>
+            accountRepo
+                .get
+                .by_username(username)['_id'],
     },
 
 
@@ -87,20 +104,30 @@ const accountRepo = {
         /**
          * <b> Send the data to RestDB </b> <br />
          *
-         * If {@param callback} function is provided,
+         * If {@param onSuccess} function is provided,
          *     - the callback function will be run upon receiving a response
          *     - the request will run in ASYNC mode
          *     - a NULL will be return <br />
-         * If {@param callback} function is NOT provided,
+         * If {@param onSuccess} function is NOT provided,
          *     - the request will run in SYNC mode
          *     - the response will be return upon receiving <br />
          *
+         * <i> async mode will only depend on if the onSuccess is provided or not </i> <br />
+         *
+         * If {@param onFailure} function is provided,
+         *     - the callback function will be run upon catching an error
+         *     - a NULL will be return <br />
+         * if {@param onFailure} function is NOT provided,
+         *     - the error will be return after catching it.
+         *
          * @param account {Account} username of the new account
-         * @param callback {function} optional, callback function
-         * @returns {null | result}
+         * @param onSuccess {function} optional, callback function to run when request succeed
+         * @param onFailure {function} optional, callback function to run when request failed
+         * @returns {{res: null, err: null}}
          */
-        create: (account, callback = null) => {
-            let result = null;
+        create: (account, onSuccess = null, onFailure = null) => {
+            let res = null;
+            let err = null;
 
             const data = {
                 'username': account.username,
@@ -108,12 +135,14 @@ const accountRepo = {
             };
 
             const settings = {
-                'async': !!callback,
+                'async': !!onSuccess,
                 'crossDomain': true,
                 'url': 'https://npy1s2idasg2-e59d.restdb.io/rest/account',
                 'method': 'POST',
                 'headers': {
-                    'content-type': 'application/json', 'x-apikey': accountRepo.API, 'cache-control': 'no-cache',
+                    'content-type': 'application/json',
+                    'x-apikey': accountRepo.API,
+                    'cache-control': 'no-cache',
                 },
                 'processData': false,
                 'data': JSON.stringify(data),
@@ -122,9 +151,16 @@ const accountRepo = {
             };
 
             $.ajax(settings)
-             .done(response => !!callback ? callback(response) : result = response);
+             .done(response =>
+                 !!onSuccess
+                     ? onSuccess(response)
+                     : res = response)
+             .fail((xhr, status, message) =>
+                 !!onFailure
+                     ? onFailure(xhr, status, message)
+                     : err = {xhr, status, message});
 
-            return result;
+            return {res, err};
         },
     },
 };
