@@ -83,16 +83,13 @@
                                 <label for="tb-email">Email: </label>
                                 <input class="form-control" id="tb-email" placeholder="Email" type="email" />
                             </div>
+                            <small class="s-error-hint" id="fc-signup-s-email-req">Email doesn't meet the regex</small>
                             <small class="s-error-hint" id="fc-signup-s-email-err">Email already taken!</small>
                         </div>
                         <div class="wrap-center-vertical">
                             <div class="fc-signup wrp-ctr-hrzt">
                                 <label for="tb-dob">Birthday: </label>
-                                <input class="form-control"
-                                       id="tb-dob"
-                                       placeholder="Birthday"
-                                       type="datetime-local"
-                                       value="2001-01-01T00:00" />
+                                <input class="form-control" id="tb-dob" placeholder="Birthday" type="datetime-local" />
                             </div>
                         </div>
                         <div class="wrap-center-vertical">
@@ -138,8 +135,12 @@
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
         <script defer src="../js/lottie/loading.js"></script>
-        <script defer src="../js/bycrpt/bycrpt.js"></script>
         <script defer src="../js/lottie/button-click.js"></script>
+        <script defer src="../js/bycrpt/bycrpt.js"></script>
+        <script defer src="../js/util/regex.js"></script>
+        <script defer src="../js/util/util.js"></script>
+        <script defer src="../js/component/account.js"></script>
+        <script defer src="../js/component/user.js"></script>
         <script defer src="../js/signup.js"></script>
     </body>
 </html>
