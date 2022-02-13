@@ -130,7 +130,7 @@ small.s-error-hint {
     justify-content: center;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 767px) {
     .fc-signup > label {
         width: auto;
     }
