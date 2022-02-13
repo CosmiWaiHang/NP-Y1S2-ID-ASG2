@@ -96,7 +96,7 @@ const accountRepo = {
         id_by_username: username =>
             accountRepo
                 .get
-                .by_username(username)['_id'],
+                .by_username(username).res['_id'],
     },
 
 
@@ -162,5 +162,36 @@ const accountRepo = {
 
             return {res, err};
         },
+    },
+
+    delete: (accountId, onSuccess = null, onFailure = null) => {
+        let res = null;
+        let err = null;
+
+        const settings = {
+            'async': !!onSuccess,
+            'crossDomain': true,
+            'url': `https://npy1s2idasg2-e59d.restdb.io/rest/account/${accountId}`,
+            'method': 'DELETE',
+            'headers': {
+                'content-type': 'application/json',
+                'x-apikey': accountRepo.API,
+                'cache-control': 'no-cache',
+            },
+            'beforeSend': () => showLoading(),
+            'complete': () => hideLoading(),
+        };
+
+        $.ajax(settings)
+         .done(response =>
+             !!onSuccess
+                 ? onSuccess(response)
+                 : res = response)
+         .fail((xhr, status, message) =>
+             !!onFailure
+                 ? onFailure(xhr, status, message)
+                 : err = {xhr, status, message});
+
+        return {res, err};
     },
 };
