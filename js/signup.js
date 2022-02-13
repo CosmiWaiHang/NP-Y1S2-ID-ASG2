@@ -97,10 +97,9 @@ $(window).on('load', () => {
         },
 
         success: {
-            account: () => {
+            account: () =>
                 $('#fc-signup-s-username-err')
-                    .css('display', 'none');
-            },
+                    .css('display', 'none'),
 
             user: () => {
                 $('#fc-signup-s-email-err')
@@ -144,7 +143,13 @@ $(window).on('load', () => {
             userRepo
                 .post
                 .create(user,
-                    () => handler.success.user(),
+                    response => {
+                        /* If successfully save both account and user to RestDB, redirect them to main page */
+                        handler.success.user();
+                        sessionStorage.setItem('accountId', accountId);
+                        sessionStorage.setItem('userId', response['_id']);
+                        $(location).prop('href', 'mainpage.html');
+                    },
                     (xhr, status, message) => {
                         handler
                             .error
