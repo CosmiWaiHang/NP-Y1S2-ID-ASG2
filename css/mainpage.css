@@ -4,17 +4,43 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 body {
     background: darkblue;
+    overflow: hidden;
 }
+
+/*  #04061c Black Pearl, #422548 Bossanova 
+    #ab2fa0 Medium Red Violet #bc4bb5 Fuchsia Pink 
+    #5b21e3 Purple Heart #9a3e29 Burnt Umber
+    #cca1a3 Eunry #4d2baa Daisy Bush
+
+/*  Navigation Bar  */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #04061c;
+}
+
 .logo-img {
     position: absolute;
-    left: 45%;
+    left: 40%;
     top: 0;
 }
+
+.balance-value {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+}
+
 /* Hamburger Menu */
+
 .hamburger-menu-wrapper {
-    background: yellow;
+    background: #04061c;
     display: flex;
     align-items: center;
     position: fixed;
@@ -28,29 +54,48 @@ body {
     opacity: 0;
     visibility: hidden;
 }
+
 .hamburger-menu-list {
     display: flex;
     flex-direction: column;
     list-style-type: none;
 }
+
 .hamburger-menu-element {
     margin: 40px;
 }
+
 .hamburger-menu-link {
     position: relative;
-    display: inline-flex;
+    display: inline-block;
     font-weight: bold;
     font-size: 3em;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
+    text-shadow: 0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 10px #bc4bb5,0px 0px 10px #bc4bb5;
+    padding: 0.25em 1em;
 }
+
+.hamburger-menu-link:hover {
+    animation: HoverEffect 0.75s linear infinite;
+}
+    @keyframes HoverEffect {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
 .hamburger-menu-wrapper.active {
     opacity: 1;
     visibility: visible;
 }
 
 /* Hamburger Button */
+
 .hamburger-menu-btn {
     position: relative;
     display: flex;
@@ -62,14 +107,16 @@ body {
     transition: all .5s ease-in-out;
     z-index: 2;
 }
+
 .hamburger-menu {
     width: 50px;
     height: 6px;
     background: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px red;
+    box-shadow: 0 2px 5px #ab2fa0;
     transition: all .5s ease-in-out;
 }
+
 .hamburger-menu::before,
 .hamburger-menu::after {
     content: '';
@@ -78,27 +125,41 @@ body {
     height: 6px;
     background: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px red;
+    box-shadow: 0 2px 5px #ab2fa0;
     transition: all .5s ease-in-out;
 }
+
 .hamburger-menu::before {
     transform: translateY(-16px);
 }
+
 .hamburger-menu::after {
     transform: translateY(16px);
 }
 
 /* Animation for hamburger menu */
+
 .hamburger-menu-btn.open .hamburger-menu {
     transform: translateX(-50px);
     background: transparent;
     box-shadow: none;
 }
+
 .hamburger-menu-btn.open .hamburger-menu::before{
     transform: rotate(45deg) translate(35px, -35px);
 }
+
 .hamburger-menu-btn.open .hamburger-menu::after{
     transform: rotate(-45deg) translate(35px, 35px);
 }
 
 /* */
+
+.game-background {
+    overflow: hidden;
+}
+
+.game-background img{
+    height: 100%;
+    width: 100%;
+}
