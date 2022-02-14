@@ -31,17 +31,18 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
+    margin-top: 1em;
 }
 
 .fc-signup > input {
     background: rgba(196, 196, 196, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.5);
-    height: 6.25vh;
+    height: 10vh;
     margin: 0.75vh;
     max-height: 75px;
     min-height: 45px;
     min-width: 150px;
-    width: 15vw;
+    width: 25vw;
 }
 
 .fc-signup > label {
@@ -127,4 +128,32 @@ small.s-error-hint {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+    .fc-signup > label {
+        width: auto;
+    }
+
+    .wrp-ctr-hrzt {
+        align-content: flex-start;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .fc-signup > input {
+        height: 5.5vh;
+        width: 45vw;
+    }
+
+    #d-signup {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow: scroll;
+    }
 }
