@@ -1,3 +1,4 @@
+// hamburger animation
 document.querySelector('.hamburger-menu-btn').onclick = function (e) {
     var menu = document.querySelector('.hamburger-menu-wrapper');
     var btn = document.querySelector('.hamburger-menu-btn');
@@ -7,3 +8,8 @@ document.querySelector('.hamburger-menu-btn').onclick = function (e) {
 
     e.preventDefault();
 }
+// tooltip
+const tooltips = document.querySelectorAll('.rate-tooltip')
+tooltips.forEach(t => {
+    new bootstrap.Tooltip(t)
+})
