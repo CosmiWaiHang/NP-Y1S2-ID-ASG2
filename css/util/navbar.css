@@ -63,7 +63,7 @@ body {
 #navbar-content a:not(:only-child):after {
     content: '\f105';
     display: inline-block;
-    font-family: 'Font Awesome 5 Free', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 14px;
     font-weight: 900;
     padding-right: 3px;
