@@ -212,7 +212,7 @@ const accountRepo = {
 
         $.ajax(settings)
          .done(response => {
-             const id = response[0];
+             const id = response.result[0];
              const account = new Account(id, null, null);
 
              !!onSuccess ? onSuccess(account) : res = account;
