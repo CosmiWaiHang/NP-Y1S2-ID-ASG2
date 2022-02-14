@@ -10,5 +10,5 @@ const proxy = {
         $.getJSON(`${proxy.default}/get?url=${source}`)
          .done(response => onDone(response))
          .fail(error => onFail(error));
-    }
-}
+    },
+};
