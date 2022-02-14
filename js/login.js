@@ -4,15 +4,15 @@
 $(window).on('load', () => {
     'use strict';
 
-    // prevent form to reload when submit button being click
+    /* Prevent page to reload when submit button being click */
     $('#f-login')
-        .submit(e => e.preventDefault());
+        .submit(() => false);
 
     $('#d-login')
         .fadeIn('fast', 'swing', () => $('#d-login').css('display', 'flex'));
 
     $('#tb-password')
-        .copy(() => false);
+        .on('cut copy paste', () => false);
 
     hintClick('#btn-login', '#btn-click-tp');
 });

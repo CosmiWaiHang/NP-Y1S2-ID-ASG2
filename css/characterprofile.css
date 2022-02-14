@@ -1,0 +1,78 @@
+
+/*  import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+
+
+.model {
+  height: 330px;
+  width: 410px;
+}
+
+
+html body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 100%;
+  height: auto;
+  align-items: center;
+}
+
+.stat {
+  font-family: 'Zen Kurenaido', sans-serif;
+  max-width: 40%;
+  font-size: 15px;
+  color: white;
+  font-weight: 300;
+  padding: 1rem 2rem;
+}
+
+.heading {
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  letter-spacing: 0.25ch; 
+}
+
+
+html {
+  background: radial-gradient(50vmin 50vmin, #BC4BB5, #5B21E3);
+
+  background-position: -20vw center;
+  background-repeat: no-repeat;
+  background-color: #5b21e3;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+
+
+
+/* responsive media query*/    
+@media (max-width: 300px) {
+  .model{
+      transform: scale(0.5);
+  }
+  .html{
+      background-position: center -30vw;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .model{
+      transform: scale(0.8);
+  }
+  .html body{
+      flex-direction: column;
+  }
+  .html{
+      background-position: center -20vw;
+  }
+}

@@ -4,7 +4,7 @@
 $(window).on('load', () => {
     'use strict';
 
-    /* Prevent form to reload when submit button being click */
+    /* Prevent page to reload when submit button being click */
     $('#f-signup')
         .submit(() => false);
 
@@ -21,119 +21,154 @@ $(window).on('load', () => {
 (() => {
     'use strict';
 
-    const regex = {
+    const validator = {
         username: () => {
-            const reUsername = /^[a-zA-Z]{4,}/g;
-            const username = $('#tb-username').val();
+            const eUsername = $('#tb-username');
+            const eHint = $('#fc-signup-s-username-req');
 
-            const isValid = reUsername.exec(username);
-
-            $('#fc-signup-s-username-req')
-                .css('display', isValid ? 'none' : 'block');
-
-            return isValid;
+            return regex.username(eUsername, eHint);
         },
 
         password: () => {
-            const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
-            const password = $('#tb-password').val();
+            const ePassword = $('#tb-password');
+            const eHint = $('#fc-signup-s-password-req');
 
-            const isValid = rePassword.exec(password);
-
-            $('#fc-signup-s-password-req')
-                .css('display', isValid ? 'none' : 'block');
-
-            return isValid;
+            return regex.password(ePassword, eHint);
         },
 
         passwordConfirm: () => {
-            const password = $('#tb-password').val();
-            const confirm = $('#tb-password-cfm').val();
+            const ePassword = $('#tb-password');
+            const eConfirm = $('#tb-password-cfm');
+            const eHint = $('#fc-signup-s-password-err');
 
-            const isValid = password === confirm;
+            return regex.passwordConfirm(ePassword, eConfirm, eHint);
+        },
 
-            $('#fc-signup-s-password-err')
-                .css('display', isValid ? 'none' : 'block');
+        email: () => {
+            const eEmail = $('#tb-email');
+            const eHint = $('#fc-signup-s-email-req');
 
-            return isValid;
+            return regex.email(eEmail, eHint);
         },
 
         contact: () => {
-            const reContact = /^([689])\d{7}/g;
-            const contact = $('#tb-contact').val();
+            const eContact = $('#tb-contact');
+            const eHint = $('#fc-signup-s-contact-req');
 
-            const isValid = reContact.exec(contact);
-
-            $('#fc-signup-s-contact-req')
-                .css('display', isValid ? 'none' : 'block');
-
-            return isValid;
+            return regex.contact(eContact, eHint);
         },
 
-        exec: () => regex.username() && regex.password() && regex.passwordConfirm() && regex.contact(),
+        exec: () =>
+            validator.username()
+            && validator.password()
+            && validator.passwordConfirm()
+            && validator.email()
+            && validator.contact(),
+    };
+
+    const handler = {
+        error: {
+            account: xhr => {
+                const list = xhr['responseJSON']['list'];
+                const fieldList = [];
+
+                for (let i = 0, max = list.length; i < max; i++) {
+                    fieldList.push(list[i].field);
+                }
+
+                $('#fc-signup-s-username-err')
+                    .css('display', fieldList.includes('username') ? 'block' : 'none');
+            },
+
+            user: xhr => {
+                const list = xhr['responseJSON']['list'];
+                const fieldList = [];
+
+                for (let i = 0, max = list.length; i < max; i++) {
+                    fieldList.push(list[i].field);
+                }
+
+                $('#fc-signup-s-email-err')
+                    .css('display', fieldList.includes('email') ? 'block' : 'none');
+
+                $('#fc-signup-s-contact-err')
+                    .css('display', fieldList.includes('contact') ? 'block' : 'none');
+            },
+        },
+
+        success: {
+            account: () =>
+                $('#fc-signup-s-username-err')
+                    .css('display', 'none'),
+
+            user: () => {
+                $('#fc-signup-s-email-err')
+                    .css('display', 'none');
+
+                $('#fc-signup-s-contact-err')
+                    .css('display', 'none');
+            },
+        },
     };
 
     const create = {
         account: () => {
-            const username = $('#tb-username').val();
+            const username = $('#tb-username').val().toLowerCase();
             const password = $('#tb-password').val();
             const salt = gensalt(8);
 
-            hashpw(
-                password,
-                salt,
-                hash => {
-                    const account = new Account(username, hash);
-                    
-                    accountRepo
-                        .post
-                        .create(account, response => console.log(response));
-                },
-                () => {},
-            );
+            hashpw(password, salt, hash => {
+                const account = new Account(null, username, hash);
+
+                accountRepo
+                    .post
+                    .create(account,
+                        response => {
+                            handler.success.account();
+                            create.user(response.id);
+                        },
+                        error => handler.error.account(error));
+            });
         },
 
-        user: () => {
-            const username = $('#tb-username').val();
-            const accountId =
-                accountRepo
-                    .get
-                    .id_by_username(username);
-
-            const email = $('#tb-email').val();
+        user: accountId => {
+            const username = $('#tb-username').val().toLowerCase();
+            const email = $('#tb-email').val().toLowerCase();
             const dob = $('#tb-dob').val();
             const contact = $('#tb-contact').val();
 
-            const user = new User(email, dob, contact, accountId);
+            const user = new User(null, email, dob, contact, accountId);
 
             userRepo
                 .post
-                .create(user, response => console.log(response));
+                .create(user,
+                    response => {
+                        /* If successfully save both account and user to RestDB, redirect them to main page */
+                        handler.success.user();
+                        sessionStorage.setItem('accountId', accountId);
+                        sessionStorage.setItem('userId', response['_id']);
+                        $(location).prop('href', 'mainpage.html');
+                    },
+                    error => {
+                        handler.error.user(error);
+                        accountRepo
+                            .delete(accountId,
+                                () => {},
+                                () => console.log('WARN: deletion of account failed.'));
+                    });
         },
 
         all: () => {
-            create.account();
-
-            sleep(5000)
-                .then(() => create.user());
+            create.account(); // will automatically create user if successfully created account
         },
     };
 
     $('#btn-signup')
         .click(() => {
-            const hasMeetRequirement = regex.exec();
+            const hasMeetRequirement = validator.exec();
 
             if (hasMeetRequirement) {
                 create.all();
             }
         });
 })();
-
-console.log('s!O219615');
-console.log('Cosmiwaihangx');
-console.log('98765432');
-
-$('#tb-username').val('Cosmiwaihangx');
-$('#tb-password #tb-password-cfm').val('s!O219615');
-$('#tb-contact').val('98765432');
-$('#tb-email').val('S12345678A@connect.np.edu.sg');
