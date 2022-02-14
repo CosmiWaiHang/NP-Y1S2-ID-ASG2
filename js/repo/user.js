@@ -127,6 +127,7 @@ const userRepo = {
                 'email': user.email,
                 'contact': user.contact,
                 'account_id': user.accountId,
+                'balance': 0.0,
             };
 
             if (!!user.dob) {
