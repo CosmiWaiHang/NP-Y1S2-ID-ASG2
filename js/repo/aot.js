@@ -130,21 +130,28 @@ const aotRepo = {
             let res = null;
             let err = null;
 
-            const proxy = 'https://api.allorigins.win';
-            const source = encodeURIComponent(`https://attack-on-titan-server.herokuapp.com/titans?limit=${limit}`);
+            const url = `https://attack-on-titan-server.herokuapp.com/titans?limit=${limit}`;
 
-            $.getJSON(`${proxy}/get?url=${source}`)
-             .done(response => {
-                 const aotList = aotRepo.convert(response.contents);
+            proxy.getJSON(url, response => {
+                const aotList = aotRepo.convert(response.contents);
+                !!onSuccess ? onSuccess(aotList) : res = aotList;
+            }, error => !!onFailure ? onFailure(error) : err = error);
 
-                 !!onSuccess
-                     ? onSuccess(aotList)
-                     : res = aotList;
-             })
-             .fail((xhr, status, message) =>
-                 !!onFailure
-                     ? onFailure(xhr, status, message)
-                     : err = {xhr, status, message});
+            return {res, err};
+        },
+
+        by_name: (name, onSuccess = null, onFailure = null) => {
+            let res = null;
+            let err = null;
+
+            const url = `https://attack-on-titan-server.herokuapp.com/titans/search?name=${name}`;
+
+            proxy.getJSON(url, response => {
+                const aotList = aotRepo.convert(response.contents);
+                !!onSuccess ? onSuccess(aotList) : res = aotList;
+            }, error => !!onFailure ? onFailure(error) : err = error);
+
+            return {res, err};
         },
     },
 };
