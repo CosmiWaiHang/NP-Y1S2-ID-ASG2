@@ -2,9 +2,18 @@
 
 
 class Account {
-    constructor(username, password) {
+    constructor(id, username, password) {
+        this._id = id;
         this._username = username;
         this._password = password;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
     }
 
     get username() {
@@ -52,7 +61,6 @@ const accountRepo = {
          * @param username {string} username of the account
          * @param onSuccess {function} optional, callback function to run when request succeed
          * @param onFailure {function} optional, callback function to run when request failed
-         * @returns {{res: null, err: null}}
          */
         by_username: (username, onSuccess = null, onFailure = null) => {
             let res = null;
@@ -77,10 +85,7 @@ const accountRepo = {
             };
 
             $.ajax(settings)
-             .done(response =>
                  !!onSuccess
-                     ? onSuccess(response)
-                     : res = response[0])
              .fail((xhr, status, message) =>
                  !!onFailure
                      ? onFailure(xhr, status, message)
@@ -96,7 +101,6 @@ const accountRepo = {
         id_by_username: username =>
             accountRepo
                 .get
-                .by_username(username).res['_id'],
     },
 
 
