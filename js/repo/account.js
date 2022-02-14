@@ -35,6 +35,29 @@ class Account {
 
 
 const accountRepo = {
+    convert: {
+        single: account => {
+            const username = account['username'];
+            const password = account['password'];
+            const id = account['_id'];
+
+            return new Account(id, username, password);
+        },
+
+        all: accountList => {
+            const result = [];
+
+            for (let i = 0, max = accountList.length; i < max; i++) {
+                const account = accountList[i];
+                const converted = accountRepo.convert.single(account);
+
+                result.push(converted);
+            }
+
+            return result;
+        },
+    },
+
     API: '620020386a79155501021871',
 
 
@@ -85,11 +108,13 @@ const accountRepo = {
             };
 
             $.ajax(settings)
-                 !!onSuccess
-             .fail((xhr, status, message) =>
-                 !!onFailure
-                     ? onFailure(xhr, status, message)
-                     : err = {xhr, status, message});
+             .done(response => {
+                 const accountList = accountRepo.convert.all(response);
+                 const first = accountList[0];
+
+                 !!onSuccess ? onSuccess(first) : res = first;
+             })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
 
             return {res, err};
         },
@@ -101,6 +126,7 @@ const accountRepo = {
         id_by_username: username =>
             accountRepo
                 .get
+                .by_username(username).res.id,
     },
 
 
@@ -155,14 +181,12 @@ const accountRepo = {
             };
 
             $.ajax(settings)
-             .done(response =>
-                 !!onSuccess
-                     ? onSuccess(response)
-                     : res = response)
-             .fail((xhr, status, message) =>
-                 !!onFailure
-                     ? onFailure(xhr, status, message)
-                     : err = {xhr, status, message});
+             .done(response => {
+                 const account = accountRepo.convert.single(response);
+
+                 !!onSuccess ? onSuccess(account) : res = account;
+             })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
 
             return {res, err};
         },
@@ -187,14 +211,13 @@ const accountRepo = {
         };
 
         $.ajax(settings)
-         .done(response =>
-             !!onSuccess
-                 ? onSuccess(response)
-                 : res = response)
-         .fail((xhr, status, message) =>
-             !!onFailure
-                 ? onFailure(xhr, status, message)
-                 : err = {xhr, status, message});
+         .done(response => {
+             const id = response[0];
+             const account = new Account(id, null, null);
+
+             !!onSuccess ? onSuccess(account) : res = account;
+         })
+         .fail(error => !!onFailure ? onFailure(error) : err = error);
 
         return {res, err};
     },
