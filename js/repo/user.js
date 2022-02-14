@@ -2,12 +2,21 @@
 
 
 class User {
-    constructor(email, dob, contact, accountId, balance) {
+    constructor(id, email, dob, contact, accountId, balance) {
+        this._id = id;
         this._email = email;
         this._dob = dob;
         this._contact = contact;
         this._accountId = accountId;
         this._balance = balance;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
     }
 
     get email() {
@@ -53,6 +62,32 @@ class User {
 
 
 const userRepo = {
+    convert: {
+        single: user => {
+            const email = user['email'];
+            const dob = user['birthday'];
+            const contact = user['contact'];
+            const accountId = user['account_id'];
+            const balance = user['balance'];
+            const id = user['_id'];
+
+            return new User(id, email, dob, contact, accountId, balance);
+        },
+
+        all: userList => {
+            const result = [];
+
+            for (let i = 0, max = userList.length; i < max; i++) {
+                const user = userList[i];
+                const converted = userRepo.convert.single(user);
+
+                result.push(converted);
+            }
+
+            return result;
+        },
+    },
+
     API: '620020386a79155501021871',
 
 
@@ -115,14 +150,12 @@ const userRepo = {
             };
 
             $.ajax(settings)
-             .done(response =>
-                 !!onSuccess
-                     ? onSuccess(response)
-                     : res = response)
-             .fail((xhr, status, message) =>
-                 !!onFailure
-                     ? onFailure(xhr, status, message)
-                     : err = {xhr, status, message});
+             .done(response => {
+                 const user = userRepo.convert.single(response);
+
+                 !!onSuccess ? onSuccess(user) : res = user;
+             })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
 
             return {res, err};
         },
@@ -147,14 +180,13 @@ const userRepo = {
         };
 
         $.ajax(settings)
-         .done(response =>
-             !!onSuccess
-                 ? onSuccess(response)
-                 : res = response)
-         .fail((xhr, status, message) =>
-             !!onFailure
-                 ? onFailure(xhr, status, message)
-                 : err = {xhr, status, message});
+         .done(response => {
+             const id = response.result[0];
+             const user = new User(id, null, null, null, null, null);
+
+             !!onSuccess ? onSuccess(user) : res = user;
+         })
+         .fail(error => !!onFailure ? onFailure(error) : err = error);
 
         return {res, err};
     },
