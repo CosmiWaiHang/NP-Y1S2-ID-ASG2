@@ -118,27 +118,26 @@ $(window).on('load', () => {
             const salt = gensalt(8);
 
             hashpw(password, salt, hash => {
-                const account = new Account(username, hash);
+                const account = new Account(null, username, hash);
 
                 accountRepo
                     .post
                     .create(account,
-                        () => handler.success.account(),
-                        (xhr, status, message) => handler.error.account(xhr));
-            }, () => {});
+                        response => {
+                            handler.success.account();
+                            create.user(response.id);
+                        },
+                        error => handler.error.account(error));
+            });
         },
 
-        user: () => {
+        user: accountId => {
             const username = $('#tb-username').val().toLowerCase();
-            const accountId = accountRepo
-                .get
-                .id_by_username(username);
-
             const email = $('#tb-email').val().toLowerCase();
             const dob = $('#tb-dob').val();
             const contact = $('#tb-contact').val();
 
-            const user = new User(email, dob, contact, accountId);
+            const user = new User(null, email, dob, contact, accountId);
 
             userRepo
                 .post
@@ -150,10 +149,8 @@ $(window).on('load', () => {
                         sessionStorage.setItem('userId', response['_id']);
                         $(location).prop('href', 'mainpage.html');
                     },
-                    (xhr, status, message) => {
-                        handler
-                            .error
-                            .user(xhr);
+                    error => {
+                        handler.error.user(error);
                         accountRepo
                             .delete(accountId,
                                 () => {},
@@ -162,10 +159,7 @@ $(window).on('load', () => {
         },
 
         all: () => {
-            create.account();
-
-            sleep(5000)
-                .then(() => create.user());
+            create.account(); // will automatically create user if successfully created account
         },
     };
 
@@ -178,12 +172,3 @@ $(window).on('load', () => {
             }
         });
 })();
-
-console.log('s!O219615');
-console.log('Cosmiwaihangx');
-console.log('98765432');
-
-$('#tb-username').val('Cosmiwaihangx');
-$('#tb-password #tb-password-cfm').val('s!O219615');
-$('#tb-contact').val('98765432');
-$('#tb-email').val('S12345678A@connect.np.edu.sg');
