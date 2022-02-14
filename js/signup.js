@@ -132,7 +132,6 @@ $(window).on('load', () => {
         },
 
         user: accountId => {
-            const username = $('#tb-username').val().toLowerCase();
             const email = $('#tb-email').val().toLowerCase();
             const dob = $('#tb-dob').val();
             const contact = $('#tb-contact').val();
