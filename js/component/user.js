@@ -2,11 +2,12 @@
 
 
 class User {
-    constructor(email, dob, contact, accountId) {
+    constructor(email, dob, contact, accountId, balance) {
         this._email = email;
         this._dob = dob;
         this._contact = contact;
         this._accountId = accountId;
+        this._balance = balance;
     }
 
     get email() {
@@ -39,6 +40,14 @@ class User {
 
     set accountId(value) {
         this._accountId = value;
+    }
+
+    get balance() {
+        return this._balance;
+    }
+
+    set balance(value) {
+        this._balance = value;
     }
 }
 
