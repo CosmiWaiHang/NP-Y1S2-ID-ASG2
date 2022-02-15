@@ -20,9 +20,9 @@ $(window).on('load', () => {
     accountRepo
         .get
         .by_id(account, response => {
-            const eProfile = $('#navbar-content-profile > a')[0];
-            const icoLogout = '<i class="far fa-arrow-alt-circle-right"></i>';
-            eProfile.innerHTML = `${icoLogout} ${response.username}`;
+            const eProfile = $('#navbar-content-profile > a');
+            eProfile[0].href = '#'; // profile page is under development
+            eProfile[0].innerHTML = '<i class="far fa-arrow-alt-circle-right"></i>' + capitalize(response.username);
         });
 });
 
