@@ -153,5 +153,22 @@ const aotRepo = {
 
             return {res, err};
         },
+
+        all_by_rating_smaller_or_equal: (rating, onSuccess = null, onFailure = null) =>
+            aotRepo
+                .get
+                .all(100, titanList => {
+                    const resultList = [];
+
+                    for (let i = 0, max = titanList.length; i < max; i++) {
+                        const titan = titanList[i];
+
+                        if (rating >= titan.rating) {
+                            resultList.push(titan);
+                        }
+                    }
+
+                    onSuccess(resultList);
+                }, onFailure),
     },
 };
