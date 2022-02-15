@@ -83,7 +83,7 @@ const summon = {
     },
 
     many: (count = 10) => {
-        for(let i = 0, max = count; i < max; i++) {
+        for (let i = 0, max = count; i < max; i++) {
             summon.single();
         }
     },
