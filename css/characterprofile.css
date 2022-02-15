@@ -19,7 +19,7 @@ html body {
 }
 
 .stat {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: Zen Kurenaido, sans-serif;
   max-width: 40%;
   font-size: 15px;
   color: white;
@@ -75,4 +75,34 @@ html, body {
   .html{
       background-position: center -20vw;
   }
+}
+
+
+.info {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 14px;
+}
+
+.subheading {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+p {
+  line-height: 18px;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+.logo-img {
+    position: relative;
+    left: 40%;
 }
