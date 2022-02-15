@@ -2,9 +2,18 @@
 
 
 class Account {
-    constructor(username, password) {
+    constructor(id, username, password) {
+        this._id = id;
         this._username = username;
         this._password = password;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
     }
 
     get username() {
@@ -26,10 +35,67 @@ class Account {
 
 
 const accountRepo = {
+    convert: {
+        single: account => {
+            const username = account['username'];
+            const password = account['password'];
+            const id = account['_id'];
+
+            return new Account(id, username, password);
+        },
+
+        all: accountList => {
+            const result = [];
+
+            for (let i = 0, max = accountList.length; i < max; i++) {
+                const account = accountList[i];
+                const converted = accountRepo.convert.single(account);
+
+                result.push(converted);
+            }
+
+            return result;
+        },
+    },
+
     API: '620020386a79155501021871',
 
 
     get: {
+        by_id: (account, onSuccess = null, onFailure = null) => {
+            let res = null;
+            let err = null;
+
+            const query = {
+                '_id': account.id,
+            };
+
+            const settings = {
+                'async': !!onSuccess,
+                'crossDomain': true,
+                'url': `https://npy1s2idasg2-e59d.restdb.io/rest/account?q=${JSON.stringify(query)}`,
+                'method': 'GET',
+                'headers': {
+                    'content-type': 'application/json',
+                    'x-apikey': accountRepo.API,
+                    'cache-control': 'no-cache',
+                },
+                'beforeSend': () => showLoading(),
+                'complete': () => hideLoading(),
+            };
+
+            $.ajax(settings)
+             .done(response => {
+                 const accountList = accountRepo.convert.all(response);
+                 const first = accountList[0];
+
+                 !!onSuccess ? onSuccess(first) : res = first;
+             })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
+
+            return {res, err};
+        },
+
         /**
          * <b> Get the account by username from RestDB </b> <br />
          *
@@ -52,7 +118,6 @@ const accountRepo = {
          * @param username {string} username of the account
          * @param onSuccess {function} optional, callback function to run when request succeed
          * @param onFailure {function} optional, callback function to run when request failed
-         * @returns {{res: null, err: null}}
          */
         by_username: (username, onSuccess = null, onFailure = null) => {
             let res = null;
@@ -77,14 +142,13 @@ const accountRepo = {
             };
 
             $.ajax(settings)
-             .done(response =>
-                 !!onSuccess
-                     ? onSuccess(response)
-                     : res = response[0])
-             .fail((xhr, status, message) =>
-                 !!onFailure
-                     ? onFailure(xhr, status, message)
-                     : err = {xhr, status, message});
+             .done(response => {
+                 const accountList = accountRepo.convert.all(response);
+                 const first = accountList[0];
+
+                 !!onSuccess ? onSuccess(first) : res = first;
+             })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
 
             return {res, err};
         },
@@ -96,7 +160,7 @@ const accountRepo = {
         id_by_username: username =>
             accountRepo
                 .get
-                .by_username(username).res['_id'],
+                .by_username(username).res.id,
     },
 
 
@@ -151,14 +215,12 @@ const accountRepo = {
             };
 
             $.ajax(settings)
-             .done(response =>
-                 !!onSuccess
-                     ? onSuccess(response)
-                     : res = response)
-             .fail((xhr, status, message) =>
-                 !!onFailure
-                     ? onFailure(xhr, status, message)
-                     : err = {xhr, status, message});
+             .done(response => {
+                 const account = accountRepo.convert.single(response);
+
+                 !!onSuccess ? onSuccess(account) : res = account;
+             })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
 
             return {res, err};
         },
@@ -183,14 +245,13 @@ const accountRepo = {
         };
 
         $.ajax(settings)
-         .done(response =>
-             !!onSuccess
-                 ? onSuccess(response)
-                 : res = response)
-         .fail((xhr, status, message) =>
-             !!onFailure
-                 ? onFailure(xhr, status, message)
-                 : err = {xhr, status, message});
+         .done(response => {
+             const id = response.result[0];
+             const account = new Account(id, null, null);
+
+             !!onSuccess ? onSuccess(account) : res = account;
+         })
+         .fail(error => !!onFailure ? onFailure(error) : err = error);
 
         return {res, err};
     },

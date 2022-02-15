@@ -4,15 +4,15 @@
 $(window).on('load', () => {
     'use strict';
 
-    // prevent form to reload when submit button being click
+    /* Prevent page to reload when submit button being click */
     $('#f-login')
-        .submit(e => e.preventDefault());
+        .submit(() => false);
 
     $('#d-login')
         .fadeIn('fast', 'swing', () => $('#d-login').css('display', 'flex'));
 
     $('#tb-password')
-        .copy(() => false);
+        .on('cut copy paste', () => false);
 
     hintClick('#btn-login', '#btn-click-tp');
 });
@@ -21,77 +21,61 @@ $(window).on('load', () => {
 (() => {
     'use strict';
 
-    const regex = {
+    const validator = {
         username: () => {
-            // 4 letters (min)
-            const reUsername = /^[a-zA-Z]{4,}/g;
-            const username = $('#tb-username').val();
+            const eUsername = $('#tb-username');
+            const eHint = $('#fc-login-s-username-req');
 
-            const isValid = reUsername.exec(username);
-
-            $('#fc-login-s-username-req')
-                .css('display', isValid ? 'none' : 'block');
-
-            return isValid;
+            return regex.username(eUsername, eHint);
         },
 
         password: () => {
-            // 8 characters (min), 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character.
-            const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
-            const password = $('#tb-password').val();
+            const ePassword = $('#tb-password');
+            const eHint = $('#fc-login-s-password-req');
 
-            const isValid = rePassword.exec(password);
-
-            $('#fc-login-s-password-req')
-                .css('display', isValid ? 'none' : 'block');
-
-            return isValid;
+            return regex.password(ePassword, eHint);
         },
 
-        exec: () => regex.username() && regex.password(),
+        exec: () => validator.username() && validator.password(),
     };
 
 
     // s!O219615
     // s!O{student id last 6 digits}
-    const auth = body => {
-        const isUsernameExist = 0 !== body.length;
+    const auth = account => {
+        const hasAccount = !!account;
 
-        $('#fc-login-s-username-err').css('display', isUsernameExist ? 'none' : 'block');
+        $('#fc-login-s-username-err')
+            .css('display', hasAccount ? 'none' : 'block');
 
-        if (!isUsernameExist) { return; }
+        if (!hasAccount) { return; }
 
         const password = $('#tb-password').val();
-        const hash = body[0].password;
+        const hash = account.password;
 
-        checkpw(password, hash, r => {
-            if (undefined === r) { return; }
+        checkpw(password, hash, isValid => {
+            $('#fc-login-s-password-err')
+                .css('display', isValid ? 'none' : 'block');
 
-            $('#fc-login-s-password-err').css('display', r ? 'none' : 'block');
+            if (!isValid) {
+                return;
+            }
 
-            // continue if succeed
-            window.alert(r ? 'login success' : 'login not success');
-        }, () => {});
+            sessionStorage.setItem('accountId', account.id);
+            $(location).prop('href', 'summon.html');
+        });
     };
 
     $('#btn-login').click(() => {
-        const hasMeetRequirement = regex.exec();
+        const hasMeetRequirement = validator.exec();
 
         if (!hasMeetRequirement) { return; }
 
         const username = $('#tb-username').val().toLowerCase();
-        const settings = {
-            'async': true,
-            'crossDomain': true,
-            'url': `https://npy1s2idasg2-e59d.restdb.io/rest/account?q={"username":"${username}"}`,
-            'method': 'GET',
-            'headers': {
-                'content-type': 'application/json', 'x-apikey': '620020386a79155501021871', 'cache-control': 'no-cache',
-            },
-            'beforeSend': () => showLoading(),
-            'complete': () => hideLoading(),
-        };
 
-        $.ajax(settings).done(response => auth(response));
+        accountRepo
+            .get
+            .by_username(username,
+                response => auth(response));
     });
 })();
