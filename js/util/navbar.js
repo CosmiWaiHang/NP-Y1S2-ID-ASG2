@@ -22,7 +22,7 @@ $(window).on('load', () => {
         .by_id(account, response => {
             const eProfile = $('#navbar-content-profile > a');
             eProfile[0].href = '#'; // profile page is under development
-            eProfile[0].innerHTML = '<i class="far fa-arrow-alt-circle-right"></i>' + capitalize(response.username);
+            eProfile[0].innerHTML = '<i class="far fa-arrow-alt-circle-right"></i>Hi, ' + capitalize(response.username);
         });
 });
 
