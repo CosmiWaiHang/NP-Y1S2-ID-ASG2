@@ -3,7 +3,29 @@
 
 $(document).ready(() => setTimeout(() => navExec()));
 
+
 $(window).on('resize', () => setTimeout(() => navExec(), 500));
+
+
+$(window).on('load', () => {
+    const accountId = sessionStorage.getItem('accountId');
+    const hasAccountId = !!accountId;
+
+    if (!hasAccountId) {
+        return;
+    }
+
+    const account = new Account(accountId, null, null);
+
+    accountRepo
+        .get
+        .by_id(account, response => {
+            const eProfile = $('#navbar-content-profile > a')[0];
+            const icoLogout = '<i class="far fa-arrow-alt-circle-right"></i>';
+            eProfile.innerHTML = `${icoLogout} ${response.username}`;
+        });
+});
+
 
 jQuery(document).ready($ => {
     let path = window.location.pathname.split('/').pop();
@@ -15,6 +37,7 @@ jQuery(document).ready($ => {
     const target = $('#navbar-content ul li a[href="' + path + '"]');
     target.parent().addClass('active');
 });
+
 
 $('.navbar-toggler').click(() => {
     $('.navbar-collapse').slideToggle(300);
