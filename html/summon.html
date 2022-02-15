@@ -34,7 +34,8 @@
         <link href="../css/util/normalize.css" rel="stylesheet" type="text/css">
         <link href="../css/util/card.css" rel="stylesheet" type="text/css">
         <link href="../css/lottie/loading.css" rel="stylesheet" type="text/css">
-        <link href="../css/util/navbar.css" rel="stylesheet">
+        <link href="../css/util/navbar.css" rel="stylesheet" type="text/css">
+        <link href="../css/summon.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -60,26 +61,6 @@
                         <div class="left"></div>
                         <div class="right"></div>
                     </div>
-                    <!--                    <li class="nav-item">-->
-                    <!--                        <a class="nav-link" href="javascript:void 0;"><i class="fas fa-tachometer-alt"></i>Dashboard</a>-->
-                    <!--                    </li>-->
-                    <!--                    <li class="nav-item active">-->
-                    <!--                        <a class="nav-link" href="javascript:void 0;"><i class="far fa-address-book"></i>Address-->
-                    <!--                                                                                                         Book</a>-->
-                    <!--                    </li>-->
-                    <!--                    <li class="nav-item">-->
-                    <!--                        <a class="nav-link" href="javascript:void 0;"><i class="far fa-clone"></i>Components</a>-->
-                    <!--                    </li>-->
-                    <!--                    <li class="nav-item">-->
-                    <!--                        <a class="nav-link" href="javascript:void 0;"><i class="far fa-calendar-alt"></i>Calendar</a>-->
-                    <!--                    </li>-->
-                    <!--                    <li class="nav-item">-->
-                    <!--                        <a class="nav-link" href="javascript:void 0;"><i class="far fa-chart-bar"></i>Charts</a>-->
-                    <!--                    </li>-->
-                    <!--                    <li class="nav-item">-->
-                    <!--                        <a class="nav-link" href="javascript:void 0;"><i class="far fa-copy"></i>Documents</a>-->
-                    <!--                    </li>-->
-
                     <li class="nav-item">
                         <a class="nav-link" href="mainpage.html"><i class="fas fa-home"></i>Home</a>
                     </li>
@@ -98,53 +79,12 @@
         </nav>
 
         <!-- Main -->
-        <div class="card-slider" id="card-summon-items">
-            <div class="blog-slider__wrp swiper-wrapper">
-                <div class="card-slider-item swiper-slide">
-                    <div class="card-slider-img">
-
-                        <img alt=""
-                             src="https://img.freepik.com/free-vector/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.jpg?size=626&ext=jpg">
-                    </div>
-                    <div class="card-slider-content">
-                        <span class="card-slider-code">I am code 1</span>
-                        <div class="card-slider-title">I am title 1</div>
-                        <div class="card-slider-text">I am text 1
-                        </div>
-                        <a class="card-slider-button" href="#">I am button 1</a>
-                    </div>
-                </div>
-                <div class="card-slider-item swiper-slide">
-                    <div class="card-slider-img">
-                        <img alt=""
-                             src="https://img.freepik.com/free-vector/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.jpg?size=626&ext=jpg">
-                    </div>
-                    <div class="card-slider-content">
-                        <span class="card-slider-code">I am code 2</span>
-                        <div class="card-slider-title">I am title 2</div>
-                        <div class="card-slider-text">I am text 2
-                        </div>
-                        <a class="card-slider-button" href="#">I am button 2</a>
-                    </div>
-                </div>
-
-                <div class="card-slider-item swiper-slide">
-                    <div class="card-slider-img">
-                        <img alt=""
-                             src="https://img.freepik.com/free-vector/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.jpg?size=626&ext=jpg">
-                    </div>
-                    <div class="card-slider-content">
-                        <span class="card-slider-code">I am code 3</span>
-                        <div class="card-slider-title">I am title 3</div>
-                        <div class="card-slider-text">I am text 3
-                        </div>
-                        <a class="card-slider-button" href="#">I am button 3</a>
-                    </div>
-                </div>
-
+        <section id="card-summon-container-section">
+            <div class="card-slider" id="card-summon-container">
+                <div class="blog-slider__wrp swiper-wrapper" id="card-summon-items"></div>
+                <div class="card-slider-pagination"></div>
             </div>
-            <div class="card-slider-pagination"></div>
-        </div>
+        </section>
         <!-- End Main -->
 
         <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -163,6 +103,8 @@
         <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <script defer src="../js/lottie/loading.js"></script>
+        <script defer src="../js/util/proxy.js"></script>
+        <script defer src="../js/repo/aot.js"></script>
         <script defer src="../js/repo/account.js"></script>
         <script defer src="../js/repo/user.js"></script>
         <script defer src="../js/util/util.js"></script>
