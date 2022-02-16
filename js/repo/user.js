@@ -196,44 +196,43 @@ const userRepo = {
     },
 
 
-    put: {
-        update_balance_by_id: (user, onSuccess = null, onFailure = null) => {
-            let res = null;
-            let err = null;
+    put: (user, onSuccess = null, onFailure = null) => {
+        let res = null;
+        let err = null;
 
-            const data = {
-                'email': user.email,
-                'contact': user.contact,
-                'account_id': user.accountId,
-                'balance': user.balance,
-            };
+        const data = {
+            'email': user.email,
+            'birthday': user.dob,
+            'contact': user.contact,
+            'account_id': user.accountId,
+            'balance': user.balance,
+        };
 
-            const settings = {
-                'async': !!onSuccess,
-                'crossDomain': true,
-                'url': `https://npy1s2idasg2-e59d.restdb.io/rest/member/${user.id}`,
-                'method': 'PUT',
-                'headers': {
-                    'content-type': 'application/json',
-                    'x-apikey': userRepo.API,
-                    'cache-control': 'no-cache',
-                },
-                'processData': false,
-                'data': JSON.stringify(data),
-                'beforeSend': () => showLoading(),
-                'complete': () => hideLoading(),
-            };
+        const settings = {
+            'async': !!onSuccess,
+            'crossDomain': true,
+            'url': `https://npy1s2idasg2-e59d.restdb.io/rest/member/${user.id}`,
+            'method': 'PUT',
+            'headers': {
+                'content-type': 'application/json',
+                'x-apikey': userRepo.API,
+                'cache-control': 'no-cache',
+            },
+            'processData': false,
+            'data': JSON.stringify(data),
+            'beforeSend': () => showLoading(),
+            'complete': () => hideLoading(),
+        };
 
-            $.ajax(settings)
-             .done(response => {
-                 const user = userRepo.convert.single(response);
+        $.ajax(settings)
+         .done(response => {
+             const user = userRepo.convert.single(response);
 
-                 !!onSuccess ? onSuccess(user) : res = user;
-             })
-             .fail(error => !!onFailure ? onFailure(error) : err = error);
+             !!onSuccess ? onSuccess(user) : res = user;
+         })
+         .fail(error => !!onFailure ? onFailure(error) : err = error);
 
-            return {res, err};
-        },
+        return {res, err};
     },
 
 
