@@ -3,8 +3,25 @@
 
 $(window).on('load', () => {
     'use strict';
+    $("#card-summon-container-section")
+    .fadeOut(0)
 
-    summon.many(10);
+    $('#btn-summon-one')
+    .click(() => {
+        summon.single();
+        $("#main-summon-container-section")
+        .fadeOut(0)
+        $("#card-summon-container-section")
+        .fadeIn(1500)
+    })
+    $('#btn-summon-multi')
+    .click(() => {
+        summon.many(10);
+        $("#main-summon-container-section")
+        .fadeOut(0)
+        $("#card-summon-container-section")
+        .fadeIn(1500)
+    })
 });
 
 
@@ -52,7 +69,7 @@ const summon = {
                                  <span class="card-slider-code">${aot.rating}</span>
                                  <div class="card-slider-title">${aot.name}</div>
                                  <div class="card-slider-text">${aot.about}</div>
-                                 <a class="card-slider-button" href="#">I am button 2</a>
+                                 <a class="card-slider-button" href="summon.html">Return</a>
                              </div>
                          </div>`);
 
@@ -88,6 +105,7 @@ const summon = {
         }
     },
 };
+
 
 // Backup code.
 // `
