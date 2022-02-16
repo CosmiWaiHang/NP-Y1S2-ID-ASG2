@@ -33,9 +33,13 @@
         <link href="css/util/normalize.css" rel="stylesheet">
         <link href="css/lottie/loading.css" rel="stylesheet">
         <link href="css/util/navbar.css" rel="stylesheet" type="text/css">
+        <link href="css/util/grid.css" rel="stylesheet" type="text/css">
+        <link href="css/util/meteor.css" rel="stylesheet" type="text/css">
+        <link href="css/index.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
+        <canvas id="canvas-background"></canvas>
         <lottie-player autoplay
                        id="lp-loading"
                        loop
@@ -65,8 +69,7 @@
                         <a class="nav-link" href="html/summon.html"><i class="fas fa-users"></i>Summon</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="html/characterprofile.html"><i class="far fa-address-book"></i>Character</a>
+                        <a class="nav-link" href="html/characterprofile.html"><i class="far fa-address-book"></i>Character</a>
                     </li>
                     <li class="nav-item" id="navbar-content-profile">
                         <a class="nav-link" href="html/login.html"><i class="far fa-user"></i>Log In</a>
@@ -76,6 +79,7 @@
         </nav>
 
         <!-- Main -->
+        <div class="grid" id="grid-character"></div>
         <!-- End Main -->
 
         <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -95,5 +99,10 @@
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <script defer src="js/lottie/loading.js"></script>
         <script defer src="js/util/navbar.js"></script>
+        <script defer src="js/util/util.js"></script>
+        <script defer src="js/util/proxy.js"></script>
+        <script defer src="js/repo/aot/character.js"></script>
+        <script defer src="js/util/meteor.js"></script>
+        <script defer src="js/index.js"></script>
     </body>
 </html>
