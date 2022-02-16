@@ -19,7 +19,7 @@ $(window).on('load', () => {
         eDisplay.innerText = `SGD ${separator(this.value)}`;
     });
 
-    $('.btn-cute.cute')
+    $('#btn-amt-holder .btn-cute.cute')
         .each((index, element) => {
             const button = $(element);
 
