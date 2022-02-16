@@ -24,7 +24,8 @@ $(window).on('load', () => {
                     </div>
                 `);
 
-                eCharacter.click(() => $(location).prop('href', `html/characterprofile.html?herokuappId=${character.id}`));
+                eCharacter.click(() => $(location)
+                    .prop('href', `html/characterprofile.html?herokuappId=${character.id}`));
 
                 $('#grid-character').append(eCharacter);
 
