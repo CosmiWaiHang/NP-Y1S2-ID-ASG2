@@ -35,3 +35,25 @@ $(window).on('load', () => {
 
         }, error => console.log(error));
 });
+
+// Backup code
+// <div className="card">
+//     <div className="photos"><img className="photo-1"
+//                                  src="https://picsum.photos/id/10/200/400" /><img className="photo-2"
+//                                                                                   src="https://picsum.photos/id/12/200/400" />
+//     </div>
+//     <div className="content">
+//         <div className="title">Title</div>
+//         <div className="body">My description</div>
+//     </div>
+// </div>
+// <div className="card double">
+//     <div className="photos"><img className="photo-1"
+//                                  src="https://picsum.photos/id/14/400/800" /><img className="photo-2"
+//                                                                                   src="https://picsum.photos/id/16/400/800" />
+//     </div>
+//     <div className="content">
+//         <div className="title">Title</div>
+//         <div className="body">My description</div>
+//     </div>
+// </div>
