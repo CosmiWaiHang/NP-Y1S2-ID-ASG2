@@ -1,0 +1,25 @@
+#btn-amt-holder {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5%;
+    justify-content: center;
+    width: 100%;
+}
+
+.range-slider {
+    width: 50vw;
+}
+
+#range-slider-holder {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 90vh;
+    justify-content: center;
+    width: 100vw;
+}
