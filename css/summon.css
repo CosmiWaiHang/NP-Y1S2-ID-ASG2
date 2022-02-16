@@ -1,9 +1,14 @@
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 #card-summon-container-section {
     background-color: rgba(35, 31, 32, 0.10);
     height: calc(100vh - 65px);
     z-index: 1;
+    display: none;
 }
-
 
 @media screen and (min-width: 992px) {
     #card-summon-container-section {
@@ -15,3 +20,77 @@
         justify-content: center;
     }
 }
+
+#main-summon-container-section {
+    width: 100vw;
+    height: -webkit-fill-available;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    background: url("../asset/img/7a5e72e46eef38079c9a0494d34b41bb.jpg") top right no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.btn-summon-ctn span{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+  }
+  .btn-summon-ctn span a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;    
+  }
+  .btn-summon-ctn span a:before,
+  .btn-summon-ctn span a:after{
+    position: absolute;
+    height: 55px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #231F20;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+
+  .btn-summon-ctn span a.left:before {
+    content: "Summon x1";
+  }
+
+  .btn-summon-ctn span a.right:before {
+    content: "Summon x10";
+  }
+
+  .btn-summon-ctn span a.left:after {
+    content: "Continue?";
+  }
+
+  .btn-summon-ctn span a.right:after {
+    content: "Continue?";
+  }
+
+  .btn-summon-ctn span a:before{
+    color: white;
+    text-shadow: 0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 10px #bc4bb5,0px 0px 10px #bc4bb5;
+    border: 5px solid #231F20;
+    transform: rotateY(0deg) translateZ(25px);
+  }
+  .btn-summon-ctn span a:after{
+    color: white;
+    text-shadow: 0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 10px #bc4bb5,0px 0px 10px #bc4bb5;
+    transform: rotateX(90deg) translateZ(25px);
+  }
+  .btn-summon-ctn span a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+  }
+  

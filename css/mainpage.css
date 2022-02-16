@@ -30,7 +30,7 @@ body {
     top: 0;
 }
 .logo-img img{
-    width:30%;
+    width: 30%;
 }
 
 .balance-display {
@@ -50,7 +50,7 @@ body {
     float: left;
     color: white;
     text-transform: uppercase;
-    padding: 1.09em;
+    padding: 0.81em;
     background: rgba(216,216,216,0.1);
 }
 
