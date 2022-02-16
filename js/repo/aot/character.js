@@ -254,7 +254,6 @@ const characterRepo = {
                          updator(info, character);
                      }
 
-                     console.log(characterList);
                      onSuccess(characterList);
                  })
                  .fail(error => onFailure(error));
