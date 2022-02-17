@@ -143,7 +143,6 @@ btns.forEach((btn, i) => {
     const user = userRepo.get.by_id(tmp).res;
     console.log(user);
     console.log(user.balance);
-
     $('#txt-balance')[0].innerText = user.balance;
 })();
 
