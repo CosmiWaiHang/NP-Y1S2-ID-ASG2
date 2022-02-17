@@ -1,8 +1,4 @@
 
-/*  import google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
-
-
 .model {
   height: 330px;
   width: 410px;
@@ -19,7 +15,7 @@ html body {
 }
 
 .stat {
-  font-family: Zen Kurenaido, sans-serif;
+  font-family: 'Poppins', sans-serif;
   max-width: 40%;
   font-size: 15px;
   color: white;
@@ -35,13 +31,45 @@ html body {
 }
 
 
-html {
-  background: radial-gradient(50vmin 50vmin, #BC4BB5, #5B21E3);
+/* html {
+  background: radial-gradient(50vmin 50vmin, Grey, Black);
 
   background-position: -20vw center;
   background-repeat: no-repeat;
-  background-color: #5b21e3;
+  background-color: Black;
+} */
+
+
+/* html {
+  background-image: url("../asset/img/charaprof.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+html, body {
+  width: 100%;
+  height:100%;
 }
+
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
 
 html, body {
   width: 100%;
