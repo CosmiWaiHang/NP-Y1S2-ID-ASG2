@@ -34,10 +34,12 @@
         <link href="../css/util/card.css" rel="stylesheet" type="text/css">
         <link href="../css/lottie/loading.css" rel="stylesheet" type="text/css">
         <link href="../css/util/navbar.css" rel="stylesheet" type="text/css">
+        <link href="../css/util/meteor.css" rel="stylesheet" type="text/css">
         <link href="../css/summon.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
+        <canvas id="canvas-background"></canvas>
         <lottie-player autoplay
                        id="lp-loading"
                        loop
@@ -46,7 +48,7 @@
                        src="../asset/lottie/loading-morandi-50.json"></lottie-player>
 
         <nav class="navbar-expand-custom navbar-mainbg" id="navbar">
-            <a class="navbar-brand navbar-logo" href="#"><img src="../asset/img/Asset 52.png" alt="game logo" style="max-width: 100px; max-height: 150px;"></a>
+            <a class="navbar-brand navbar-logo" href="#"><img src="../asset/img/Asset 52.png" alt="game logo" style="max-width: 60px; max-height: 100px;"></a>
             <button aria-controls="navbar-content"
                     aria-expanded="false"
                     aria-label="toggle navigation"
@@ -71,6 +73,9 @@
                            href="characterprofile.html"><i class="far fa-address-book"></i>Character</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="statistics.html"><i class="far fa-chart-bar"></i>Statistics</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="topup.html"><i class="fas fa-tachometer-alt"></i>TopUp</a>
                     </li>
                     <li class="nav-item" id="navbar-content-profile">
@@ -88,59 +93,57 @@
                 <div class="card-slider-pagination"></div>
             </div>
         </section>
-
-        <div class="img-slider">
+        <div class="balance-display">
+            <div class="balance-icon">
+                <img src="../asset/img/pngaaa.com-1559466.png" alt="ethereum logo">
+            </div>
+            <div class="balance-text">
+                <h2 id="txt-balance"></h2>
+            </div>
+            <div class="top-up-icon">
+                <a href="topup.html">
+                    <img src="../asset/img/outline_add_circle_outline_white_24dp.png" alt="plus sign">
+                </a>
+            </div>
+        </div>
+        <div class="img-slider" id="main-summon-container-section">
             <div class="slide active">
-              <img src="../asset/img/7a5e72e46eef38079c9a0494d34b41bb.jpg" alt="">
-              <div class="info">
-                <h2>Slide 01</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
+                <img src="../asset/img/bg-1.jpg" alt="">
+                <div class="info">
+                    <h2>Collection Sina</h2>
+                    <p>Wall Sina was the innermost Wall protecting the kingdom where the king and other civilians resided. The cities of Wall Sina were protected by the Military Police serving under the king. The underground is poorer and more prone to criminal activity.</p>
+                    
+                </div>
+                <div class="summon-btns">
+                    <div class="left btn-summon-ctn" id="btn-summon-one">
+                        <span><a class="left" href="#"></a></span>
+                    </div>
+                    <div class="right btn-summon-ctn" id="btn-summon-multi">
+                        <span><a class="right" href="#"></a></span>
+                    </div>
+                </div>
             </div>
             <div class="slide">
-              <img src="2.jpg" alt="">
-              <div class="info">
-                <h2>Slide 02</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
+                <img src="../asset/img/bg-2.jpg" alt="">
+                <div class="info">
+                    <h2>Collection Rose</h2>
+                    <p>Wall Rose was the second outermost Wall following Wall Maria. It was breached by the Colossus Titan in 850, but the breach was later sealed by Eren Yeager with assistance from the military. It was thought to have been breached again after Titans appeared inside it a little over a month later, but the Titans turned out to have emerged from another source.</p>
+                </div>
             </div>
             <div class="slide">
-              <img src="3.jpg" alt="">
-              <div class="info">
-                <h2>Slide 03</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="4.jpg" alt="">
-              <div class="info">
-                <h2>Slide 04</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="5.jpg" alt="">
-              <div class="info">
-                <h2>Slide 05</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
+                <img src="../asset/img/bg-3.jpg" alt="">
+                <div class="info">
+                    <h2>Collection Maria</h2>
+                    <p>Wall Maria was the outermost Wall of the human kingdom. Like the other Walls, Wall Maria was approximately 50 meters in height. In 845, it was breached by the Colossus Titan and Armored Titan and its territory is lost to the Titans.[43] Six years later it was repopulated, after the hole in Shiganshina District was sealed by Eren Yeager and all the Titans inside the Walls were killed.</p>
+                </div>
             </div>
             <div class="navigation">
-              <div class="btn active"></div>
-              <div class="btn"></div>
-              <div class="btn"></div>
-              <div class="btn"></div>
-              <div class="btn"></div>
+                <div class="btn active"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
             </div>
-          </div>
-        <!-- <div class="summon-btns">
-            <div class="left btn-summon-ctn" id="btn-summon-one">
-                <span><a class="left" href="#"></a></span>
-            </div>
-            <div class="right btn-summon-ctn" id="btn-summon-multi">
-                <span><a class="right" href="#"></a></span>
-            </div>
-        </div> -->
+        </div>
+        
         <!-- End Main -->
 
         <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -166,5 +169,6 @@
         <script defer src="../js/util/util.js"></script>
         <script defer src="../js/util/navbar.js"></script>
         <script defer src="../js/summon.js"></script>
+        <script defer src="../js/util/meteor.js"></script>
     </body>
 </html>

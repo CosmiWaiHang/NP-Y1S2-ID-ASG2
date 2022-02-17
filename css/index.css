@@ -76,3 +76,13 @@ body {
     position: relative;
     right: 5vw;
 }
+
+#background-image {
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: -2147483648;
+}

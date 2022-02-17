@@ -10,6 +10,7 @@
 }
 
 .range-slider {
+    background-color: rgba(255, 255, 255, 0.75);
     width: 50vw;
 }
 
@@ -27,6 +28,15 @@
 #btn-pay {
     margin-top: 1.5em;
     width: 100%;
+}
+
+.range-slider-slider input {
+    background-color: rgb(180, 180, 180);
+}
+
+.range-slider-subtitle {
+    color: red;
+    font-weight: 400;
 }
 
 .btn-cute.cute.green {
@@ -54,4 +64,30 @@
 
 .btn-cute.cute.green:active::before {
     box-shadow: 0 0 0 2px rgb(133, 177, 143), 0 0 rgb(226, 255, 226);
+}
+
+#background-image {
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: -2147483648;
+}
+
+@media screen and (max-width: 426px) {
+    #btn-amt-holder {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .range-slider-value,
+    .range-slider-subtitle {
+        text-align: center;
+    }
 }

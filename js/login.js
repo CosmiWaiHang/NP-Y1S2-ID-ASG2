@@ -61,7 +61,11 @@ $(window).on('load', () => {
                 return;
             }
 
+            // Handle success login.
+            const user = userRepo.get.by_account_id(account.id).res;
+
             sessionStorage.setItem('accountId', account.id);
+            sessionStorage.setItem('userId', user.id);
             $(location).prop('href', 'summon.html');
         });
     };

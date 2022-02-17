@@ -62,6 +62,35 @@ const accountRepo = {
 
 
     get: {
+        all: (onSuccess = null, onFailure = null) => {
+            let res = null;
+            let err = null;
+
+            const settings = {
+                "async": !!onSuccess,
+                "crossDomain": true,
+                "url": "https://npy1s2idasg2-e59d.restdb.io/rest/account",
+                "method": "GET",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": accountRepo.API,
+                    "cache-control": "no-cache"
+                },
+                'beforeSend': () => showLoading(),
+                'complete': () => hideLoading(),
+            }
+
+            $.ajax(settings)
+             .done(function (response) {
+                 const accountList = accountRepo.convert.all(response);
+
+                 !!onSuccess ? onSuccess(accountList) : res = accountList;
+            })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
+
+            return {res, err};
+        },
+
         by_id: (account, onSuccess = null, onFailure = null) => {
             let res = null;
             let err = null;

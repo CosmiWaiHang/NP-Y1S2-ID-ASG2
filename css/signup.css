@@ -3,14 +3,14 @@ body {
     font-weight: 300;
 }
 
-#img-background {
+#background-image {
     height: 100vh;
     object-fit: cover;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     width: 100vw;
-    z-index: -1;
+    z-index: -2147483648;
 }
 
 #d-signup {
