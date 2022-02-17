@@ -1,0 +1,57 @@
+#btn-amt-holder {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5%;
+    justify-content: center;
+    width: 100%;
+}
+
+.range-slider {
+    width: 50vw;
+}
+
+#range-slider-holder {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 90vh;
+    justify-content: center;
+    width: 100vw;
+}
+
+#btn-pay {
+    margin-top: 1.5em;
+    width: 100%;
+}
+
+.btn-cute.cute.green {
+    background: rgb(240, 255, 245);
+    border: 2px solid rgb(133, 177, 143);
+    color: rgb(56, 43, 34);
+}
+
+.btn-cute.cute.green::before {
+    background: rgb(207, 249, 196);
+    box-shadow: 0 0 0 2px rgb(133, 177, 143), 0 0.625em 0 0 rgb(226, 255, 226);
+}
+
+.btn-cute.cute.green:hover {
+    background: rgb(233, 255, 235);
+}
+
+.btn-cute.cute.green:hover::before {
+    box-shadow: 0 0 0 2px rgb(133, 177, 143), 0 0.5em 0 0 rgb(226, 255, 226);
+}
+
+.btn-cute.cute.green:active {
+    background: rgb(233, 255, 235);
+}
+
+.btn-cute.cute.green:active::before {
+    box-shadow: 0 0 0 2px rgb(133, 177, 143), 0 0 rgb(226, 255, 226);
+}

@@ -15,11 +15,11 @@ class AotCharacter {
         this._alias = alias;
 
         /* https://docs.api.jikan.moe/ */
-        this._malId = malId;
-        this._url = url;
-        this._image = image;
-        this._favourite = favourite;
-        this._about = about;
+        this._malId = !!malId ? malId : -1;
+        this._url = !!url ? url : '';
+        this._image = !!image ? image : '';
+        this._favourite = !!favourite ? favourite : 0;
+        this._about = !!about ? about : '';
 
         /* RestDB */
         this._rating = 0.0;
@@ -254,7 +254,6 @@ const characterRepo = {
                          updator(info, character);
                      }
 
-                     console.log(characterList);
                      onSuccess(characterList);
                  })
                  .fail(error => onFailure(error));
