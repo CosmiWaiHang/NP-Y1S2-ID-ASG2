@@ -124,6 +124,39 @@ const userRepo = {
 
             return {res, err};
         },
+
+        by_account_id: (user, onSuccess = null, onFailure = null) => {
+            let res = null;
+            let err = null;
+
+            const query = {
+                'account_id': user.accountId,
+            };
+            const settings = {
+                'async': !!onSuccess,
+                'crossDomain': true,
+                'url': `https://npy1s2idasg2-e59d.restdb.io/rest/member?q=${JSON.stringify(query)}`,
+                'method': 'GET',
+                'headers': {
+                    'content-type': 'application/json',
+                    'x-apikey': userRepo.API,
+                    'cache-control': 'no-cache',
+                },
+                'beforeSend': () => showLoading(),
+                'complete': () => hideLoading(),
+            };
+
+            $.ajax(settings)
+             .done(response => {
+                 const userList = userRepo.convert.all(response);
+                 const first = userList[0];
+
+                 !!onSuccess ? onSuccess(first) : res = first;
+             })
+             .fail(error => !!onFailure ? onFailure(error) : err = error);
+
+            return {res, err};
+        },
     },
 
 
