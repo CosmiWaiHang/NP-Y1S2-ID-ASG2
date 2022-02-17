@@ -105,30 +105,49 @@ const summon = {
         }
     },
 };
+// const payment = {
+//     single: () => {
+
+//     }
+// }
 var slides = document.querySelectorAll('.slide');
-    var btns = document.querySelectorAll('.btn');
-    let currentSlide = 1;
+var btns = document.querySelectorAll('.btn');
+let currentSlide = 1;
 
-    // Javascript for image slider manual navigation
-    var manualNav = function(manual){
-      slides.forEach((slide) => {
-        slide.classList.remove('active');
+// Javascript for image slider manual navigation
+var manualNav = function(manual){
+    slides.forEach((slide) => {
+    slide.classList.remove('active');
 
-        btns.forEach((btn) => {
-          btn.classList.remove('active');
-        });
-      });
-
-      slides[manual].classList.add('active');
-      btns[manual].classList.add('active');
-    }
-
-    btns.forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        manualNav(i);
-        currentSlide = i;
-      });
+    btns.forEach((btn) => {
+        btn.classList.remove('active');
     });
+    });
+
+    slides[manual].classList.add('active');
+    btns[manual].classList.add('active');
+}
+
+btns.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+    manualNav(i);
+    currentSlide = i;
+    });
+});
+
+/* Get balance */
+
+(() => {
+    const userId = sessionStorage.getItem('userId');
+    const tmp = new User(userId);
+    const user = userRepo.get.by_id(tmp).res;
+    console.log(user);
+    console.log(user.balance);
+
+    $('#txt-balance')[0].innerText = user.balance;
+})();
+
+
 // Backup code.
 // `
 // <div class="card-slider-item swiper-slide">
