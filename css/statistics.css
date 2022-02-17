@@ -1,0 +1,120 @@
+#background-image {
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: -2147483648;
+}
+
+.profile-card {
+    background: #333E4A;
+    border-radius: 5px;
+    height: 400px;
+    overflow: hidden;
+    width: 250px;
+}
+
+.infos {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+
+.img-border {
+    align-items: center;
+    background: linear-gradient(to bottom right, #698DCF, #ED8AE5);
+    border-radius: 50%;
+    display: flex;
+    height: 70px;
+    justify-content: center;
+    width: 70px;
+}
+
+.img-border img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.name {
+    color: #FFFFFF;
+    font-size: 1.4rem;
+}
+
+.specialty {
+    color: #E07272;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.social-media {
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.social-media a {
+    color: #FFFFFF;
+    margin: 0 8px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.social-media a:hover {
+    color: #E07272;
+}
+
+.contact-me-btn {
+    background: transparent;
+    border: 1px solid #E07272;
+    border-radius: 3px;
+    color: #E07272;
+    cursor: pointer;
+    height: 35px;
+    margin-top: 20px;
+    outline: none;
+    transition: all 0.4s ease;
+    width: 130px;
+}
+
+.contact-me-btn:hover {
+    background: #E07272;
+    color: #FFFFFF;
+}
+
+.stats {
+    align-items: center;
+    background: #FFFFFF;
+    display: flex;
+    /*   justify-content: center; */
+    height: 30%;
+}
+
+.stat {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    /*   background: red; */
+}
+
+.stat:nth-child(2) {
+    border: 1px solid #ADADAD;
+    border-bottom: 0;
+    border-top: 0;
+    /*   background: blue; */
+}
+
+.stat-num {
+    font-size: 1.3rem;
+}
+
+.stat-name {
+    color: #E07272;
+    font-size: 0.7em;
+}
