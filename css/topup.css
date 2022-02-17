@@ -68,9 +68,26 @@
 
 #background-image {
     height: 100vh;
+    object-fit: cover;
     position: absolute;
     right: 0;
     top: 0;
     width: 100vw;
     z-index: -2147483648;
+}
+
+@media screen and (max-width: 426px) {
+    #btn-amt-holder {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .range-slider-value,
+    .range-slider-subtitle {
+        text-align: center;
+    }
 }
