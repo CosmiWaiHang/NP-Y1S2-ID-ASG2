@@ -1,4 +1,3 @@
-
 *{
     font-family: 'Poppins', sans-serif;
 }
@@ -35,6 +34,10 @@
     background-size: cover;
 }
 
+.btn-summon-ctn {
+    margin-top: 200px;
+}
+
 .btn-summon-ctn span{
     position: relative;
     display: inline-flex;
@@ -43,54 +46,68 @@
     margin: 0 15px;
     perspective: 1000px;
   }
-  .btn-summon-ctn span a{
-    font-size: 19px;
-    letter-spacing: 1px;
-    transform-style: preserve-3d;
-    transform: translateZ(-25px);
-    transition: transform .25s;    
-  }
-  .btn-summon-ctn span a:before,
-  .btn-summon-ctn span a:after{
-    position: absolute;
-    height: 55px;
-    width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid #231F20;
-    box-sizing: border-box;
-    border-radius: 5px;
-  }
+.btn-summon-ctn span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;    
+}
+.btn-summon-ctn span a:before,
+.btn-summon-ctn span a:after{
+  position: absolute;
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
 
-  .btn-summon-ctn span a.left:before {
-    content: "Summon x1";
-  }
+.btn-summon-ctn span a.left:before {
+  content: "Summon x1";
+}
 
-  .btn-summon-ctn span a.right:before {
-    content: "Summon x10";
-  }
+.btn-summon-ctn span a.right:before {
+  content: "Summon x10";
+}
 
-  .btn-summon-ctn span a.left:after {
-    content: "Continue?";
-  }
+.btn-summon-ctn span a.left:after {
+  content: "Continue?";
+}
 
-  .btn-summon-ctn span a.right:after {
-    content: "Continue?";
-  }
+.btn-summon-ctn span a.right:after {
+  content: "Continue?";
+}
 
-  .btn-summon-ctn span a:before{
-    color: white;
-    text-shadow: 0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 10px #bc4bb5,0px 0px 10px #bc4bb5;
-    border: 5px solid #231F20;
-    transform: rotateY(0deg) translateZ(25px);
-  }
-  .btn-summon-ctn span a:after{
-    color: white;
-    text-shadow: 0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 10px #bc4bb5,0px 0px 10px #bc4bb5;
-    transform: rotateX(90deg) translateZ(25px);
-  }
-  .btn-summon-ctn span a:hover{
-    transform: translateZ(-25px) rotateX(-90deg);
-  }
+.btn-summon-ctn span a:before{
+  color: white;
+  text-shadow: 0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 10px #bc4bb5,0px 0px 10px #bc4bb5;
+  border: 5px solid rgba(0, 0, 0, 0.9);
+  transform: rotateY(0deg) translateZ(25px);
+}
+.btn-summon-ctn span a:after{
+  color: white;
+  text-shadow: 0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 30px #bc4bb5,0px 0px 10px #bc4bb5,0px 0px 10px #bc4bb5;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.btn-summon-ctn span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+.carousel-item {
+  height: 32rem;
+  background: #777;
+  color: black;
+  position: relative;
+}
+.carousel-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 50px;
+}
   
