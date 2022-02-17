@@ -106,7 +106,6 @@ const summon = {
     },
 };
 
-
 // Backup code.
 // `
 // <div class="card-slider-item swiper-slide">
