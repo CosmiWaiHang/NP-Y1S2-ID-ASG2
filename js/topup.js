@@ -17,6 +17,12 @@ $(window).on('load', () => 'use stict');
             const amount = parseInt(eSlider.val());
 
             const userId = sessionStorage.getItem('userId');
+
+            if(!!!userId) {
+                window.alert('Please login first, meow :(');
+                return;
+            }
+
             const user = getUser(userId);
 
             user.balance += amount;
