@@ -15,8 +15,7 @@ This website was built for fans of anime/Attack on Titan. The aim is to convey e
 In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
 
 - As an anime fan, I want to collect characters so that I can have more enjoyment.
-- As a working adult, I have more capital to play the game 
-longer so I can collect more characters.
+- As a working adult, I want to unwind and de-stress with the money I made and reward myself with a fun and enjoying game of gacha so that I can bounce back with a clearer head and happier soul, increasing productivity.
 
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process.
 
@@ -74,6 +73,11 @@ For any scenarios that have not been automated, test the user stories manually a
     2. Try to submit the empty form and verify that an error message about the required fields appears
     3. Try to submit the form with an invalid username or password and verify that a relevant error message appears
     4. Try to submit the form with all inputs valid and verify that a success message appears.
+
+1. Top up Page:
+    1. Go to the "Top up Page" page
+    2. Try to top up without logging in
+    3. Try to top up when logged in and verify that a success message appears.
 
 In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
 
