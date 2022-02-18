@@ -1,0 +1,249 @@
+#background-image {
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: -2147483648;
+}
+
+.card-ctn {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 80vh;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 20vh;
+    width: 100vw;
+}
+
+.card-ctn img {
+    display: block;
+    max-width: 100%;
+}
+
+.card-ctn ul {
+    list-style: none;
+}
+
+.card-ctn .card::after,
+.card-ctn .card img {
+    border-radius: 50%;
+}
+
+.card-ctn .card,
+.card-ctn .stats {
+    display: flex;
+}
+
+.card-ctn .card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .15);
+    margin: 1rem;
+    max-width: 500px;
+    overflow: hidden;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.card-ctn .card .img {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.card-ctn .card::before,
+.card-ctn .card::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+.card-ctn .card::before {
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    height: 100%;
+    left: -.7rem;
+    top: -.7rem;
+    width: 100%;
+}
+
+.card-ctn .card::after {
+    background-color: rgba(65, 114, 245, 0.67);
+    box-shadow: 2rem 6rem 0 -3rem #FFFFFF;
+    height: 15rem;
+    right: -8rem;
+    top: -8rem;
+    width: 15rem;
+}
+
+.card-ctn .card img {
+    box-shadow: 0 0 0 5px #FFFFFF;
+    min-width: 80px;
+    width: 8rem;
+}
+
+.card-ctn .infos {
+    margin-left: 1.5rem;
+}
+
+.card-ctn .name {
+    margin-bottom: 1rem;
+}
+
+.card-ctn .name h2 {
+    font-size: 1.3rem;
+}
+
+.card-ctn .name h4 {
+    color: #333333;
+    font-size: .8rem;
+}
+
+.card-ctn .text {
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+.card-ctn .stats {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.card-ctn .stats li {
+    min-width: 5rem;
+}
+
+.card-ctn .stats li h3 {
+    font-size: .99rem;
+}
+
+.card-ctn .stats li h4 {
+    font-size: .75rem;
+}
+
+.card-ctn .links {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.card-ctn .links button {
+    border: 1px solid #222222;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    min-width: 120px;
+    padding: .5rem;
+    transition: all .25s linear;
+}
+
+.card-ctn .links .follow,
+.card-ctn .links .view:hover {
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+.card-ctn .links .view,
+.card-ctn .links .follow:hover {
+    background-color: transparent;
+    color: #222222;
+}
+
+@media screen and (max-width: 450px) {
+    .card-ctn .card {
+        display: block;
+    }
+
+    .card-ctn .infos {
+        margin-left: 0;
+        margin-top: 1.5rem;
+    }
+
+    .card-ctn .links button {
+        min-width: 100px;
+    }
+}
+
+.ctn-search {
+    background-color: rgba(35, 31, 32, 0.5);
+    border-radius: 4rem;
+    height: auto;
+    left: 50%;
+    padding: 10px;
+    position: absolute;
+    top: 12.5vh;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    z-index: 1;
+}
+
+.box-search {
+    background: none;
+    border: none;
+    border-radius: 2rem;
+    color: #F7F7F7;
+    cursor: pointer;
+    float: left;
+    font-size: 1.5rem;
+    height: 4rem;
+    opacity: 1;
+    outline: none;
+    position: relative;
+    transition: all .75s ease-in;
+    width: 0;
+}
+
+.ico-search {
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: rgba(230, 255, 96, 0.8);
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-size: 2.5rem;
+    margin-left: .8rem;
+    margin-top: 0;
+    padding: .7rem;
+    position: absolute;
+    transition: all .25s ease-in;
+}
+
+.ctn-search:hover > .box-search {
+    padding: 0 1rem;
+    width: 85%;
+}
+
+::placeholder {
+    color: white;
+}
+
+.ctn-search:hover > .ico-search {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.show {
+    border: 0 solid antiquewhite;
+    width: 85%;
+}
