@@ -30,11 +30,12 @@ Include the Adobe XD wireframe as a folder. You can include the XD share url.
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
  
 ### Existing Features
-- Feature 1 - allows users to move to sections of the webpage by having them click on buttons at the top of the screen, the navigation bar
+- Feature 1 - allows users to move to sections of the webpage by having them click on buttons at the top of the screen, the navigation bar.
 - Feature 2 - When viewing on a smaller device like a mobile phone, the navigation bar would collpase into a single menu button. When clicked, options to select where you want to be at on the webpage would be automatically transitioned to the selected page smoothly for the user.
 - Feature 3 - allows users to summon either 1x or 10x in the summoning page of the website.
-- Feature 4 - allows users to view the description and an image of the character categorised by name
-- Feature 5 - a statistics page to display the gacha rates visually for ease of understanding
+- Feature 4 - allows users to view the description and an image of the character categorised by name.
+- Feature 5 - a statistics page to display the gacha rates visually for ease of understanding.
+- Feature 6 - a top up page for in game currency to summon for characters.
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
@@ -61,7 +62,7 @@ In this section, you should mention all of the languages, frameworks, libraries,
     - The project uses **JS** to allow users to interact with the website.
 
 - [adobeXD](https://www.adobe.com/sg/products/xd.html)
-    - The project uses **adobeXD** to allow users to interact with the website.
+    - The project uses **adobeXD** to wireframe for the website.
 
 
 ## Testing
