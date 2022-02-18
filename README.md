@@ -2,7 +2,7 @@
 
 For this project, we created a gacha game where players can summon either 1x or 10x to collect characters based on the award-winning anime Attack on Titan. Users can top up a wallet for the in game currency to spend on summons. We want to allow users to have fun collecting their favourite characters through an aspect of suspense through the gacha system.
 
-Here is our [GitHub Page]('https://cosmiwaihang.github.io/NP-Y1S2-ID-ASG2/')
+Here is our [GitHub Page](https://cosmiwaihang.github.io/NP-Y1S2-ID-ASG2/) - https://cosmiwaihang.github.io/NP-Y1S2-ID-ASG2/
 
 
 ## Design Process
