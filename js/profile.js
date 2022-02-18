@@ -1,7 +1,15 @@
 /*jshint esversion: 9 */
 
 
-$(window).on('load', () => {});
+$(window).on('load', () => {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+
+    if (!!name) {
+        $('#tb-search').val(name);
+        $('#ico-search').trigger('click');
+    }
+});
 
 
 const get_by_id = (id, characterList) => {
