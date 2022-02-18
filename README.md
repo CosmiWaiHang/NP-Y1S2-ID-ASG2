@@ -1,11 +1,12 @@
 # Interactive Development Assignment 2 Anime Gacha Game
 
-
 For this project, we created a gacha game where players can summon either 1x or 10x to collect characters based on the award-winning anime Attack on Titan. Users can top up a wallet for the in game currency to spend on summons. We want to allow users to have fun collecting their favourite characters through an aspect of suspense through the gacha system.
+
+Here is our [GitHub Page]('https://cosmiwaihang.github.io/NP-Y1S2-ID-ASG2/')
 
 
 ## Design Process
- 
+
 Provide us insights about your design process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
 This website was built for fans of anime/Attack on Titan. The aim is to convey excitement and joy through them playing the game. Users can collect these characters as a sort of collectible and play to get their favourite ones. Our game allows them to do so.
@@ -27,7 +28,7 @@ Include the Adobe XD wireframe as a folder. You can include the XD share url.
 
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
- 
+
 
 ### Existing Features
 - Feature 1 - allows users to move to sections of the webpage by having them click on buttons at the top of the screen, the navigation bar.
