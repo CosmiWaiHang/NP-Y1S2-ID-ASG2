@@ -9,16 +9,19 @@ $(window).on('load', () => {
     $('#btn-summon-one')
     .click(() => {
         summon.single();
+        payment.single();
         $("#main-summon-container-section")
         .fadeOut(0)
         $("#balance-display")
         .fadeOut(0)
         $("#card-summon-container-section")
         .fadeIn(1500)
+        
     })
     $('#btn-summon-multi')
     .click(() => {
         summon.many(10);
+        payment.many();
         $("#main-summon-container-section")
         .fadeOut(0)
         $("#balance-display")
@@ -109,11 +112,26 @@ const summon = {
         }
     },
 };
-// const payment = {
-//     single: () => {
-
-//     }
-// }
+const payment = {
+    single: () => {
+        const userId = sessionStorage.getItem('userId');
+        const tmp = new User(userId);
+        const user = userRepo.get.by_id(tmp).res;
+        user.balance -= 100;
+        userRepo.put(user);
+        console.log(user.balance);
+        $('#txt-balance')[0].innerText = user ? user?.balance: 0;
+    },
+    many: () => {
+        const userId = sessionStorage.getItem('userId');
+        const tmp = new User(userId);
+        const user = userRepo.get.by_id(tmp).res;
+        user.balance -= 1000;
+        userRepo.put(user);
+        console.log(user.balance);
+        $('#txt-balance')[0].innerText = user ? user?.balance: 0;
+    },
+};
 var slides = document.querySelectorAll('.slide');
 var btns = document.querySelectorAll('.btn');
 let currentSlide = 1;
