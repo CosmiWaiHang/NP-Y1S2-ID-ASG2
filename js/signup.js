@@ -146,7 +146,7 @@ $(window).on('load', () => {
                         handler.success.user();
                         sessionStorage.setItem('accountId', accountId);
                         sessionStorage.setItem('userId', response['_id']);
-                        $(location).prop('href', 'mainpage.html');
+                        $(location).prop('href', '../index.html');
                     },
                     error => {
                         handler.error.user(error);
