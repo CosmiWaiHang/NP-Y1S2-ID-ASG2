@@ -11,6 +11,8 @@ $(window).on('load', () => {
         summon.single();
         $("#main-summon-container-section")
         .fadeOut(0)
+        $("#balance-display")
+        .fadeOut(0)
         $("#card-summon-container-section")
         .fadeIn(1500)
     })
@@ -18,6 +20,8 @@ $(window).on('load', () => {
     .click(() => {
         summon.many(10);
         $("#main-summon-container-section")
+        .fadeOut(0)
+        $("#balance-display")
         .fadeOut(0)
         $("#card-summon-container-section")
         .fadeIn(1500)
