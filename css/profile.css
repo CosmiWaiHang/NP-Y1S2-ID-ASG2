@@ -1,0 +1,161 @@
+#background-image {
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: -2147483648;
+}
+
+.card-ctn {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100vh;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100vw;
+}
+
+.card-ctn img {
+    display: block;
+    max-width: 100%;
+}
+
+.card-ctn ul {
+    list-style: none;
+}
+
+.card-ctn .card::after,
+.card-ctn .card img {
+    border-radius: 50%;
+}
+
+.card-ctn .card,
+.card-ctn .stats {
+    display: flex;
+}
+
+.card-ctn .card {
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .15);
+    margin: 1rem;
+    max-width: 500px;
+    overflow: hidden;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.card-ctn .card::before,
+.card-ctn .card::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+.card-ctn .card::before {
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    height: 100%;
+    left: -.7rem;
+    top: -.7rem;
+    width: 100%;
+}
+
+.card-ctn .card::after {
+    background-color: rgba(65, 114, 245, 0.67);
+    box-shadow: 2rem 6rem 0 -3rem #FFFFFF;
+    height: 15rem;
+    right: -8rem;
+    top: -8rem;
+    width: 15rem;
+}
+
+.card-ctn .card img {
+    box-shadow: 0 0 0 5px #FFFFFF;
+    min-width: 80px;
+    width: 8rem;
+}
+
+.card-ctn .infos {
+    margin-left: 1.5rem;
+}
+
+.card-ctn .name {
+    margin-bottom: 1rem;
+}
+
+.card-ctn .name h2 {
+    font-size: 1.3rem;
+}
+
+.card-ctn .name h4 {
+    color: #333333;
+    font-size: .8rem;
+}
+
+.card-ctn .text {
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+.card-ctn .stats {
+    margin-bottom: 1rem;
+}
+
+.card-ctn .stats li {
+    min-width: 5rem;
+}
+
+.card-ctn .stats li h3 {
+    font-size: .99rem;
+}
+
+.card-ctn .stats li h4 {
+    font-size: .75rem;
+}
+
+.card-ctn .links button {
+    border: 1px solid #222222;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    min-width: 120px;
+    padding: .5rem;
+    transition: all .25s linear;
+}
+
+.card-ctn .links .follow,
+.card-ctn .links .view:hover {
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+.card-ctn .links .view,
+.card-ctn .links .follow:hover {
+    background-color: transparent;
+    color: #222222;
+}
+
+@media screen and (max-width: 450px) {
+    .card-ctn .card {
+        display: block;
+    }
+
+    .card-ctn .infos {
+        margin-left: 0;
+        margin-top: 1.5rem;
+    }
+
+    .card-ctn .links button {
+        min-width: 100px;
+    }
+}

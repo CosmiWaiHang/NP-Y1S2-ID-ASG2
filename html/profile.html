@@ -3,8 +3,143 @@
     <head>
         <meta charset="UTF-8">
         <title>Profile</title>
-    </head>
-    <body>
 
+        <meta content="ID ASG II" name="description">
+        <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+              name="viewport">
+
+        <!-- Google Font API -->
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700&display=swap" rel="stylesheet">
+        <!-- Semantic UI API -->
+        <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+              rel="stylesheet"
+              type="text/css">
+        <!-- Bootstrap API -->
+        <link crossorigin="anonymous"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+              rel="stylesheet">
+        <!-- Front Awesome -->
+        <link crossorigin="anonymous"
+              href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+              integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+              rel="stylesheet" />
+        <!-- Swiper -->
+        <link href="https://unpkg.com/swiper@8/swiper-bundle.min.css" rel="stylesheet" />
+
+        <!-- Main CSS -->
+        <link href="../css/util/normalize.css" rel="stylesheet">
+        <link href="../css/lottie/loading.css" rel="stylesheet">
+        <link href="../css/util/navbar.css" rel="stylesheet" type="text/css">
+        <link href="../css/util/meteor.css" rel="stylesheet" type="text/css">
+        <link href="../css/profile.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <img alt="" id="background-image" src="https://images8.alphacoders.com/654/thumb-1920-654111.jpg">
+        <canvas id="canvas-background"></canvas>
+        <lottie-player autoplay
+                       id="lp-loading"
+                       loop
+                       mode="bounce"
+                       speed="0.75"
+                       src="../asset/lottie/loading-morandi-50.json"></lottie-player>
+
+        <nav class="navbar-expand-custom navbar-mainbg" id="navbar">
+            <a class="navbar-brand navbar-logo" href="#"><img alt="game logo"
+                                                              src="../asset/img/Asset 52.png"
+                                                              style="max-width: 60px; max-height: 100px;"></a>
+            <button aria-controls="navbar-content"
+                    aria-expanded="false"
+                    aria-label="toggle navigation"
+                    class="navbar-toggler"
+                    type="button">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-content">
+                <ul class="navbar-nav ml-auto">
+                    <div class="hori-selector">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/summon.html"><i class="fas fa-users"></i>Summon</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/characterprofile.html"><i class="far fa-address-book"></i>Character</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/topup.html"><i class="fas fa-tachometer-alt"></i>TopUp</a>
+                    </li>
+                    <li class="nav-item" id="navbar-content-profile">
+                        <a class="nav-link" href="../html/login.html"><i class="far fa-user"></i>Log In</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main -->
+        <div class="card-ctn">
+            <div class="card">
+                <div class="img">
+                    <img alt="" src="">
+                </div>
+                <div class="infos">
+                    <div class="name">
+                        <h2>Name</h2>
+                        <h4>Alias</h4>
+                    </div>
+                    <p class="text">About</p>
+                    <ul class="stats">
+                        <li>
+                            <h3>5.0</h3>
+                            <h4>Rating</h4>
+                        </li>
+                        <li>
+                            <h3>100</h3>
+                            <h4>Favourtie</h4>
+                        </li>
+                        <li>
+                            <h3>18</h3>
+                            <h4>Age</h4>
+                        </li>
+                    </ul>
+                    <div class="links">
+                        <button class="follow">Wiki</button>
+                        <button class="view">F?</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main -->
+
+        <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script crossorigin="anonymous"
+                defer
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script crossorigin="anonymous"
+                defer
+                integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script crossorigin="anonymous"
+                defer
+                integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+        <script defer src="../js/lottie/loading.js"></script>
+        <script defer src="../js/util/navbar.js"></script>
+        <script defer src="../js/util/util.js"></script>
+        <script defer src="../js/util/proxy.js"></script>
+        <script defer src="../js/repo/account.js"></script>
+        <script defer src="../js/repo/aot/character.js"></script>
+        <script defer src="../js/util/meteor.js"></script>
+        <script defer src="../js/profile.js"></script>
     </body>
 </html>
