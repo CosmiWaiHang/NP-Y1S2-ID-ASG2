@@ -33,7 +33,7 @@ In this section, you should go over the different parts of your project, and des
 - Feature 2 - When viewing on a smaller device like a mobile phone, the navigation bar would collpase into a single menu button. When clicked, options to select where you want to be at on the webpage would be automatically transitioned to the selected page smoothly for the user.
 - Feature 3 - allows users to summon either 1x or 10x in the summoning page of the website.
 - Feature 4 - allows users to view the description and an image of the character categorised by name.
-- Feature 5 - a statistics page to display the gacha rates visually for ease of understanding.
+- Feature 5 - a statistics page to display the gacha rates visually for ease of understanding, it is color coded as well and when you click the character names on the top of the page, it would be removed from the spectrum.
 - Feature 6 - a top up page for in game currency to summon for characters.
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
