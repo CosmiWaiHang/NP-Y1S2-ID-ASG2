@@ -86,37 +86,41 @@
         <!-- Main -->
         <div class="ctn-search">
             <label for="tb-search"></label>
-            <input class="box-search" id="tb-search" placeholder="Meow, name?" type="text">
+            <input class="box-search" id="tb-search" placeholder="Meow, name or id !" type="text">
             <i class="fas fa-search ico-search" id="ico-search" onclick=""></i>
         </div>
         <div class="card-ctn">
             <div class="card">
                 <div class="img">
-                    <img alt="" src="">
+                    <img alt="" id="img-character" src="">
                 </div>
                 <div class="infos">
                     <div class="name">
-                        <h2>Name</h2>
-                        <h4>Alias</h4>
+                        <h2 id="txt-name">Name</h2>
+                        <h4 id="txt-alias">Alias</h4>
                     </div>
-                    <p class="text">About</p>
+                    <p class="text" id="txt-about">About</p>
                     <ul class="stats">
                         <li>
-                            <h3>5.0</h3>
+                            <h3 id="txt-rating">X</h3>
                             <h4>Rating</h4>
                         </li>
                         <li>
-                            <h3>100</h3>
+                            <h3 id="txt-favourite">X</h3>
                             <h4>Favourtie</h4>
                         </li>
                         <li>
-                            <h3>18</h3>
+                            <h3 id="txt-age">X</h3>
                             <h4>Age</h4>
                         </li>
                     </ul>
                     <div class="links">
-                        <button class="follow">Wiki</button>
-                        <button class="view">F?</button>
+                        <a href="" id="link-character">
+                            <button class="follow">Wiki</button>
+                        </a>
+                        <a href="https://github.com/CosmiWaiHang">
+                            <button class="view">Surprise!</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -139,8 +143,8 @@
         <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <script defer src="../js/lottie/loading.js"></script>
-        <script defer src="../js/util/navbar.js"></script>
         <script defer src="../js/util/util.js"></script>
+        <script defer src="../js/util/navbar.js"></script>
         <script defer src="../js/util/proxy.js"></script>
         <script defer src="../js/repo/account.js"></script>
         <script defer src="../js/repo/aot/character.js"></script>
