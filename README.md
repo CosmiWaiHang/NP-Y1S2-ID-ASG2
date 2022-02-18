@@ -1,19 +1,27 @@
-# Interactive Development Assignment 2 Attack on TiTan Anime Gacha Game
+# Interactive Development Assignment 2 Anime Gacha Game
 
 <!-- One or two paragraphs providing an overview of your project. Tell us about your project.
 
 Essentially, this part is your sales pitch. -->
 
-For this Project, we created a gacha game whereby players can summon either 1x or 10x to collect characters based on the award-winning anime Attack on Titan. A top up system for the in game currency to spend on summons is implemented. 
+For this project, we created a gacha game where players can summon either 1x or 10x to collect characters based on the award-winning anime Attack on Titan. Users can top up a wallet for the in game currency to spend on summons. We want to allow users to have fun collecting their favourite characters through an aspect of suspense through the gacha system.
  
 ## Design Process
  
 Provide us insights about your design process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
+This website was built for fans of anime/Attack on Titan. The aim is to convey excitement and joy through them playing the game. Users can collect these characters as a sort of collectible and play to get their favourite ones. Our game allows them to do so.
 
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. 
+In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
+
+- As an anime fan, I want to collect characters so that I can have more enjoyment.
+- As a working adult, I have more capital to play the game 
+longer so I can collect more characters.
+
+This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process.
+
+Wireframes in Adobe XD - 
+
 These files should themselves either be included as a pdf file in the project itself (in an separate directory)
 Include the Adobe XD wireframe as a folder. You can include the XD share url. 
 
