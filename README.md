@@ -32,11 +32,14 @@ In this section, you should go over the different parts of your project, and des
 ### Existing Features
 - Feature 1 - allows users to move to sections of the webpage by having them click on buttons at the top of the screen, the navigation bar
 - Feature 2 - When viewing on a smaller device like a mobile phone, the navigation bar would collpase into a single menu button. When clicked, options to select where you want to be at on the webpage would be automatically transitioned to the selected page smoothly for the user.
+- Feature 3 - allows users to summon either 1x or 10x in the summoning page of the website.
+- Feature 4 - allows users to view the description and an image of the character categorised by name
+- Feature 5 - a statistics page to display the gacha rates visually for ease of understanding
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 ### Features Left to Implement
-- Another feature idea
+- Use of a more expansive api for greater engagement and viewing pleasure for the user.
 
 ## Technologies Used
 
