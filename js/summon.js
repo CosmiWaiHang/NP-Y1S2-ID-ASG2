@@ -119,7 +119,6 @@ const payment = {
         const user = userRepo.get.by_id(tmp).res;
         user.balance -= 100;
         userRepo.put(user);
-        console.log(user.balance);
         $('#txt-balance')[0].innerText = user ? user?.balance: 0;
     },
     many: () => {
@@ -128,7 +127,6 @@ const payment = {
         const user = userRepo.get.by_id(tmp).res;
         user.balance -= 1000;
         userRepo.put(user);
-        console.log(user.balance);
         $('#txt-balance')[0].innerText = user ? user?.balance: 0;
     },
 };
@@ -163,8 +161,6 @@ btns.forEach((btn, i) => {
     const userId = sessionStorage.getItem('userId');
     const tmp = new User(userId);
     const user = userRepo.get.by_id(tmp).res;
-    console.log(user);
-    console.log(user?.balance);
     $('#txt-balance')[0].innerText = user ? user?.balance: 0;
 })();
 
