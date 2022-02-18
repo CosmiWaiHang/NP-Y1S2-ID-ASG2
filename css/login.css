@@ -101,3 +101,13 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
 }
+
+#img-background {
+    height: 100vh;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: -100;
+}
